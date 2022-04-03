@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
 
+import '../LandingPage/Landingpage.dart';
 import '../MenuBar.dart';
 
 class aboutHome extends StatefulWidget {
@@ -255,7 +256,7 @@ class _aboutHomeState extends State<aboutHome> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                loadingPage()),
+                                                landingPage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -284,7 +285,7 @@ class _aboutHomeState extends State<aboutHome> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                loadingPage()),
+                                                landingPage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -313,7 +314,7 @@ class _aboutHomeState extends State<aboutHome> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                loadingPage()),
+                                                landingPage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -342,7 +343,7 @@ class _aboutHomeState extends State<aboutHome> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                loadingPage()),
+                                                landingPage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -375,7 +376,7 @@ class _aboutHomeState extends State<aboutHome> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                loadingPage()),
+                                                landingPage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(

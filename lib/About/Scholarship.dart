@@ -253,8 +253,7 @@ class _ScholarshipState extends State<Scholarship> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -281,8 +280,7 @@ class _ScholarshipState extends State<Scholarship> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -309,8 +307,7 @@ class _ScholarshipState extends State<Scholarship> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -337,8 +334,7 @@ class _ScholarshipState extends State<Scholarship> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -365,8 +361,7 @@ class _ScholarshipState extends State<Scholarship> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -393,8 +388,7 @@ class _ScholarshipState extends State<Scholarship> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -421,8 +415,7 @@ class _ScholarshipState extends State<Scholarship> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -449,8 +442,7 @@ class _ScholarshipState extends State<Scholarship> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(

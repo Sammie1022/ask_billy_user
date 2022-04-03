@@ -256,8 +256,7 @@ class _AdmissionState extends State<Admission> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -285,8 +284,7 @@ class _AdmissionState extends State<Admission> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -314,8 +312,7 @@ class _AdmissionState extends State<Admission> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -343,8 +340,7 @@ class _AdmissionState extends State<Admission> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -372,8 +368,7 @@ class _AdmissionState extends State<Admission> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -401,8 +396,7 @@ class _AdmissionState extends State<Admission> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                loadingPage()),
+                                            builder: (context) => homePage()),
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(

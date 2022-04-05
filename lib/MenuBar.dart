@@ -7,10 +7,15 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
 
 class menuBar extends StatelessWidget {
+  var size, height, width;
   @override
   Widget build(BuildContext context) {
+    // getting the size of the window
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return Container(
-        width: 10.w,
+        width: 15.w,
         child: Drawer(
           elevation: 0,
           child: Column(
@@ -31,10 +36,10 @@ class menuBar extends StatelessWidget {
                       borderRadius: BorderRadius.only(
                           topRight: Radius.circular(10.0),
                           topLeft: Radius.circular((10.0)))),
-                  padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+                  padding: EdgeInsets.symmetric(horizontal: 1.w, vertical: 1.h),
                   child: Container(
-                    width: 5.w,
-                    height: 13.h,
+                    width: 80,
+                    height: 8.h,
                     padding: EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
@@ -45,7 +50,7 @@ class menuBar extends StatelessWidget {
                         Container(
                           child: Icon(
                             Icons.home,
-                            size: 7.h,
+                            size: 5.h,
                             color: Colors.white,
                           ),
                         ),
@@ -54,7 +59,7 @@ class menuBar extends StatelessWidget {
                         ),
                         Text(
                           'HOME',
-                          style: TextStyle(fontSize: 3.sp, color: Colors.white),
+                          style: TextStyle(fontSize: 8.sp, color: Colors.white),
                         ),
                       ],
                     ),
@@ -69,11 +74,11 @@ class menuBar extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+                  padding: EdgeInsets.symmetric(horizontal: 1.w, vertical: 1.h),
                   color: Colors.white,
                   child: Container(
-                    width: 5.w,
-                    height: 13.h,
+                    width: 80,
+                    height: 8.h,
                     padding: EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
@@ -84,7 +89,7 @@ class menuBar extends StatelessWidget {
                         Container(
                           child: Icon(
                             Icons.location_on_outlined,
-                            size: 7.h,
+                            size: 5.h,
                             color: Colors.white,
                           ),
                         ),
@@ -93,7 +98,7 @@ class menuBar extends StatelessWidget {
                         ),
                         Text(
                           'MAPS',
-                          style: TextStyle(fontSize: 3.sp, color: Colors.white),
+                          style: TextStyle(fontSize: 8.sp, color: Colors.white),
                         ),
                       ],
                     ),
@@ -108,11 +113,11 @@ class menuBar extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+                  padding: EdgeInsets.symmetric(horizontal: 1.w, vertical: 1.h),
                   color: Colors.white,
                   child: Container(
-                    width: 5.w,
-                    height: 13.h,
+                    width: 80,
+                    height: 8.h,
                     padding: EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
@@ -123,7 +128,7 @@ class menuBar extends StatelessWidget {
                         Container(
                           child: Icon(
                             Icons.question_answer_outlined,
-                            size: 7.h,
+                            size: 5.h,
                             color: Colors.white,
                           ),
                         ),
@@ -132,7 +137,7 @@ class menuBar extends StatelessWidget {
                         ),
                         Text(
                           'FAQs',
-                          style: TextStyle(fontSize: 3.sp, color: Colors.white),
+                          style: TextStyle(fontSize: 8.sp, color: Colors.white),
                         ),
                       ],
                     ),
@@ -152,10 +157,10 @@ class menuBar extends StatelessWidget {
                       borderRadius: BorderRadius.only(
                           bottomRight: Radius.circular(10.0),
                           bottomLeft: Radius.circular((10.0)))),
-                  padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+                  padding: EdgeInsets.symmetric(horizontal: 1.w, vertical: 1.h),
                   child: Container(
-                    width: 5.w,
-                    height: 13.h,
+                    width: 80,
+                    height: 8.h,
                     padding: EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
@@ -166,7 +171,7 @@ class menuBar extends StatelessWidget {
                         Container(
                           child: Icon(
                             Icons.info_outline,
-                            size: 7.h,
+                            size: 5.h,
                             color: Colors.white,
                           ),
                         ),
@@ -177,7 +182,7 @@ class menuBar extends StatelessWidget {
                           'ABOUT NU',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 2.5.sp,
+                            fontSize: 6.sp,
                             color: Colors.white,
                           ),
                         ),

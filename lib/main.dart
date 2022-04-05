@@ -23,13 +23,13 @@ void main() => runApp(
     );
 
 class MyApp extends StatelessWidget {
-  // var size, height, width;
+  var size, height, width;
   @override
   Widget build(BuildContext context) {
     // getting the size of the window
-    // size = MediaQuery.of(context).size;
-    // height = size.height;
-    // width = size.width;
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     //Set landscape orientation
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           useInheritedMediaQuery: true,
           locale: DevicePreview.locale(context),
           builder: DevicePreview.appBuilder,
-          home: landingPage(),
+          home: mapsHome(),
         );
       },
     );

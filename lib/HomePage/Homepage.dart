@@ -57,13 +57,13 @@ class _homePageState extends State<homePage> {
     return Scaffold(
         body: Container(
       height: 100.h,
-      width: 100.w,
+      width: width,
       child: Column(
         children: [
           Container(
             padding: EdgeInsets.all(6),
-            width: 100.w,
-            height: 12.h,
+            width: width,
+            height: 8.h,
             decoration: BoxDecoration(
               color: HexColor('dee7f0'),
               image: DecorationImage(
@@ -78,13 +78,15 @@ class _homePageState extends State<homePage> {
                   child: Text(
                     'Ask Billy',
                     style: GoogleFonts.montserrat(
-                        textStyle: titleStyle, fontWeight: FontWeight.bold),
+                        textStyle: titleStyle,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25.sp),
                   ),
                   margin: EdgeInsets.only(left: 3.w),
                 )),
                 Image.asset(
                   'assets/logo.png',
-                  height: 10.h,
+                  height: 7.h,
                 ),
               ],
             ),
@@ -92,7 +94,7 @@ class _homePageState extends State<homePage> {
           Container(
             color: HexColor('af9f30'),
             height: 2.h,
-            width: 100.w,
+            width: width,
           ),
           Expanded(
             child: Container(
@@ -109,14 +111,14 @@ class _homePageState extends State<homePage> {
                       // BoxFit.fill created the look I was going for.
                       fit: BoxFit.fitWidth,
                       child: SizedBox(
-                        width: 60.w,
-                        height: 65.h,
+                        width: width / 2,
+                        height: height / 2,
                         child: Container(child: VideoPlayer(_controller)),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 2.h,
+                    height: 4.h,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -146,7 +148,7 @@ class _homePageState extends State<homePage> {
                                   Container(
                                     child: Icon(
                                       Icons.question_answer_outlined,
-                                      size: 9.sp,
+                                      size: 13.sp,
                                       color: Colors.white,
                                     ),
                                     // decoration: BoxDecoration(
@@ -162,7 +164,8 @@ class _homePageState extends State<homePage> {
                                     'FAQs',
                                     style: GoogleFonts.montserrat(
                                         textStyle: btnStyle,
-                                        fontWeight: FontWeight.w600),
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 13.sp),
                                   ),
                                   SizedBox(
                                     width: 6.w,
@@ -192,7 +195,7 @@ class _homePageState extends State<homePage> {
                                   Container(
                                     child: Icon(
                                       Icons.map,
-                                      size: 9.sp,
+                                      size: 13.sp,
                                       color: Colors.white,
                                     ),
                                     padding: EdgeInsets.all(.5.w),
@@ -204,7 +207,8 @@ class _homePageState extends State<homePage> {
                                     'MAPS',
                                     style: GoogleFonts.montserrat(
                                         textStyle: btnStyle,
-                                        fontWeight: FontWeight.w600),
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 13.sp),
                                   ),
                                   SizedBox(
                                     width: 5.5.w,
@@ -234,7 +238,7 @@ class _homePageState extends State<homePage> {
                                   Container(
                                     child: Icon(
                                       Icons.info_outline,
-                                      size: 9.sp,
+                                      size: 13.sp,
                                       color: Colors.white,
                                     ),
                                     padding: EdgeInsets.all(.5.w),
@@ -242,12 +246,11 @@ class _homePageState extends State<homePage> {
                                   SizedBox(
                                     width: 1.5.w,
                                   ),
-                                  Text(
-                                    'ABOUT NU',
-                                    style: GoogleFonts.montserrat(
-                                        textStyle: btnStyle,
-                                        fontWeight: FontWeight.w600),
-                                  ),
+                                  Text('ABOUT NU',
+                                      style: GoogleFonts.montserrat(
+                                          textStyle: btnStyle,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 13.sp)),
                                   SizedBox(
                                     width: 2.5.w,
                                   )
@@ -266,7 +269,7 @@ class _homePageState extends State<homePage> {
           Container(
             color: HexColor('061e47'),
             height: 2.h,
-            width: 100.w,
+            width: width,
           ),
         ],
       ),

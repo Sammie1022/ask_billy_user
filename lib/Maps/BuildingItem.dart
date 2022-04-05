@@ -14,7 +14,7 @@ class BuildingItem extends StatefulWidget {
 }
 
 class _BuildingItemState extends State<BuildingItem> {
-  final btnStyle = TextStyle(fontSize: 3.3.h, color: Colors.white);
+  final btnStyle = TextStyle(color: Colors.white);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -42,7 +42,9 @@ class _BuildingItemState extends State<BuildingItem> {
             Text(
               widget.buildingName,
               style: GoogleFonts.montserrat(
-                  textStyle: btnStyle, fontWeight: FontWeight.w600),
+                  textStyle: btnStyle,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 12.sp),
             ),
             SizedBox(
               width: 2.w,

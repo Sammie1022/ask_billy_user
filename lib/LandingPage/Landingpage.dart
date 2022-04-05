@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
 
-import '../LoadingPage/LoadPage.dart';
 import '../LoadingPage/Loadingpage.dart';
 import '../MenuBar.dart';
 
@@ -87,7 +86,7 @@ class _landingPageState extends State<landingPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => loadingPage()),
+                                    builder: (context) => LoadingPage()),
                               );
                             },
                             style: ElevatedButton.styleFrom(

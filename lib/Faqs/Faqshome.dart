@@ -14,6 +14,7 @@ class faqsHome extends StatefulWidget {
 }
 
 class _faqsHomeState extends State<faqsHome> {
+  var size, height, width;
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
   final titleStyle = TextStyle(fontSize: 6.h, color: HexColor('061e47'));
   List<OfficeButton> offices = [
@@ -39,6 +40,10 @@ class _faqsHomeState extends State<faqsHome> {
 
   @override
   Widget build(BuildContext context) {
+    // getting the size of the window
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return Scaffold(
         drawerScrimColor: Colors.transparent,
         key: _scaffoldKey,
@@ -48,13 +53,13 @@ class _faqsHomeState extends State<faqsHome> {
         ),
         body: Container(
           height: 100.h,
-          width: 100.w,
+          width: width,
           child: Column(
             children: [
               Container(
                 padding: EdgeInsets.all(6),
-                width: 100.w,
-                height: 12.h,
+                width: width,
+                height: 8.h,
                 decoration: BoxDecoration(
                   color: HexColor('dee7f0'),
                   image: DecorationImage(
@@ -67,7 +72,7 @@ class _faqsHomeState extends State<faqsHome> {
                     GestureDetector(
                       child: Image.asset(
                         'assets/BurgerMenu.png',
-                        height: 7.h,
+                        height: 4.h,
                       ),
                       onTap: () {
                         _scaffoldKey.currentState?.openDrawer();
@@ -80,16 +85,21 @@ class _faqsHomeState extends State<faqsHome> {
                         child: Text(
                       'OFFICES',
                       style: GoogleFonts.montserrat(
-                          textStyle: titleStyle, fontWeight: FontWeight.bold),
+                          textStyle: titleStyle,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25.sp),
                     )),
-                    Image.asset('assets/logo.png'),
+                    Image.asset(
+                      'assets/logo.png',
+                      height: 7.h,
+                    ),
                   ],
                 ),
               ),
               Container(
                 color: HexColor('af9f30'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
               Expanded(
                 child: Stack(
@@ -134,7 +144,7 @@ class _faqsHomeState extends State<faqsHome> {
               Container(
                 color: HexColor('061e47'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
             ],
           ),

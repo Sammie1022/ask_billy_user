@@ -24,9 +24,10 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
+  var size, height, width;
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
-  final titleStyle = TextStyle(fontSize: 6.h, color: HexColor('061e47'));
-  final styleText = TextStyle(fontSize: 2.2.h, color: HexColor('061e47'));
+  final titleStyle = TextStyle(color: HexColor('061e47'));
+  final styleText = TextStyle(color: HexColor('061e47'));
 
   String office_name = '';
   String location = '';
@@ -71,6 +72,10 @@ class _QuestionPageState extends State<QuestionPage> {
 
   @override
   Widget build(BuildContext context) {
+    // getting the size of the window
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return Scaffold(
         drawerScrimColor: Colors.transparent,
         key: _scaffoldKey,
@@ -80,13 +85,13 @@ class _QuestionPageState extends State<QuestionPage> {
         ),
         body: SizedBox(
           height: 100.h,
-          width: 100.w,
+          width: width,
           child: Column(
             children: [
               Container(
                 padding: EdgeInsets.all(6),
-                width: 100.w,
-                height: 12.h,
+                width: width,
+                height: 8.h,
                 decoration: BoxDecoration(
                   color: HexColor('dee7f0'),
                   image: DecorationImage(
@@ -99,7 +104,7 @@ class _QuestionPageState extends State<QuestionPage> {
                     GestureDetector(
                       child: Image.asset(
                         'assets/BurgerMenu.png',
-                        height: 7.h,
+                        height: 4.h,
                       ),
                       onTap: () {
                         _scaffoldKey.currentState?.openDrawer();
@@ -112,7 +117,9 @@ class _QuestionPageState extends State<QuestionPage> {
                       child: Text(
                         widget.officeName,
                         style: GoogleFonts.montserrat(
-                            textStyle: titleStyle, fontWeight: FontWeight.bold),
+                            textStyle: titleStyle,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17.sp),
                       ),
                     ),
                     Column(
@@ -123,40 +130,43 @@ class _QuestionPageState extends State<QuestionPage> {
                           this.location,
                           style: GoogleFonts.montserrat(
                               textStyle: styleText,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 6.sp),
                         ),
                         Text(
                           this.office_hours,
                           style: GoogleFonts.montserrat(
                               textStyle: styleText,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 6.sp),
                         ),
                         Text(
                           this.office_email,
                           style: GoogleFonts.montserrat(
                               textStyle: styleText,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 6.sp),
                         ),
                       ],
                     ),
                     SizedBox(
                       width: 3.w,
                     ),
-                    Image.asset('assets/logo.png'),
+                    Image.asset('assets/logo.png', height: 7.h),
                   ],
                 ),
               ),
               Container(
                 color: HexColor('af9f30'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
               Expanded(
                 child: Stack(
                   children: [
                     Container(
                       height: 100.h,
-                      width: 100.w,
+                      width: width,
                       decoration: BoxDecoration(
                         color: HexColor('dee7f0'),
                       ),
@@ -199,7 +209,7 @@ class _QuestionPageState extends State<QuestionPage> {
               Container(
                 color: HexColor('061e47'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
             ],
           ),

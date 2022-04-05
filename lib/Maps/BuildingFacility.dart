@@ -20,11 +20,16 @@ class BuildingFacility extends StatefulWidget {
 }
 
 class _BuildingFacilityState extends State<BuildingFacility> {
+  var size, height, width;
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
-  final titleStyle = TextStyle(fontSize: 6.h, color: HexColor('061e47'));
-  final styleText = TextStyle(fontSize: 3.h, color: Colors.white);
+  final titleStyle = TextStyle(color: HexColor('061e47'));
+  final styleText = TextStyle(color: Colors.white);
   @override
   Widget build(BuildContext context) {
+    // getting the size of the window
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return Scaffold(
         drawerScrimColor: Colors.transparent,
         key: _scaffoldKey,
@@ -34,13 +39,13 @@ class _BuildingFacilityState extends State<BuildingFacility> {
         ),
         body: Container(
           height: 100.h,
-          width: 100.w,
+          width: width,
           child: Column(
             children: [
               Container(
                 padding: EdgeInsets.all(6),
-                width: 100.w,
-                height: 12.h,
+                width: width,
+                height: 8.h,
                 decoration: BoxDecoration(
                   color: HexColor('dee7f0'),
                   image: DecorationImage(
@@ -53,7 +58,7 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                     GestureDetector(
                       child: Image.asset(
                         'assets/BurgerMenu.png',
-                        height: 7.h,
+                        height: 4.h,
                       ),
                       onTap: () {
                         _scaffoldKey.currentState?.openDrawer();
@@ -68,7 +73,8 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                           widget.floor_number,
                           style: GoogleFonts.montserrat(
                               textStyle: titleStyle,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.sp),
                         )),
                     Container(
                       margin: EdgeInsets.only(left: 1.w, right: 1.w),
@@ -82,19 +88,20 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                           widget.facility.facility_name,
                           style: GoogleFonts.montserrat(
                               textStyle: titleStyle,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.sp),
                         )),
                     Expanded(
                       child: Container(),
                     ),
-                    Image.asset('assets/logo.png'),
+                    Image.asset('assets/logo.png', height: 7.h),
                   ],
                 ),
               ), //TOPBAR
               Container(
                 color: HexColor('af9f30'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
               Expanded(
                 child: Stack(
@@ -108,12 +115,13 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                     ),
                     Container(
                       alignment: Alignment.center,
-                      margin: EdgeInsets.only(left: 10.w, top: 4.h),
+                      margin:
+                          EdgeInsets.only(left: 14.w, top: 4.h, bottom: 4.h),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.0),
                           color: Colors.white),
                       height: 75.h,
-                      width: 80.w,
+                      width: width / 1.3,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -121,7 +129,7 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                           Stack(children: [
                             Image.asset(
                               'assets/MapsPage/MainBuilding/My Video.gif',
-                              width: 47.w,
+                              width: 80.w,
                               fit: BoxFit.contain,
                             ),
                           ]),
@@ -137,8 +145,8 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Container(
-                                height: 37.h,
-                                width: 32.5.w,
+                                height: 20.h,
+                                width: 34.w,
                                 alignment: Alignment.center,
                                 //margin: EdgeInsets.only(left: 2.sp),
 
@@ -149,14 +157,14 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                                 ),
                               ),
                               Container(
-                                height: 1.h,
-                                width: 32.5.w,
+                                height: .3.h,
+                                width: 62.w,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8.0),
                                     color: HexColor('af9f30')),
                               ),
                               Container(
-                                height: 37.h,
+                                height: 20.h,
                                 width: 32.5.w,
                                 alignment: Alignment.center,
                                 // margin: EdgeInsets.only(left: 2.sp),
@@ -166,7 +174,8 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                                   widget.facility.facility_description,
                                   style: GoogleFonts.montserrat(
                                       textStyle: styleText,
-                                      fontWeight: FontWeight.normal),
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 10.sp),
                                 ),
                               ),
                             ],
@@ -195,7 +204,7 @@ class _BuildingFacilityState extends State<BuildingFacility> {
               Container(
                 color: HexColor('061e47'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
             ],
           ),

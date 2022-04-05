@@ -16,6 +16,7 @@ class mapsHome extends StatefulWidget {
 }
 
 class _mapsHomeState extends State<mapsHome> {
+  var size, height, width;
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
   final titleStyle = TextStyle(fontSize: 6.h, color: HexColor('061e47'));
 
@@ -26,6 +27,10 @@ class _mapsHomeState extends State<mapsHome> {
   ];
 
   Widget build(BuildContext context) {
+    // getting the size of the window
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return Scaffold(
         drawerScrimColor: Colors.transparent,
         key: _scaffoldKey,
@@ -35,13 +40,13 @@ class _mapsHomeState extends State<mapsHome> {
         ),
         body: Container(
           height: 100.h,
-          width: 100.w,
+          width: width,
           child: Column(
             children: [
               Container(
                 padding: EdgeInsets.all(6),
-                width: 100.w,
-                height: 12.h,
+                width: width,
+                height: 8.h,
                 decoration: BoxDecoration(
                   color: HexColor('dee7f0'),
                   image: DecorationImage(
@@ -54,7 +59,7 @@ class _mapsHomeState extends State<mapsHome> {
                     GestureDetector(
                       child: Image.asset(
                         'assets/BurgerMenu.png',
-                        height: 7.h,
+                        height: 4.h,
                       ),
                       onTap: () {
                         _scaffoldKey.currentState?.openDrawer();
@@ -67,22 +72,28 @@ class _mapsHomeState extends State<mapsHome> {
                         child: Text(
                       'MAPS',
                       style: GoogleFonts.montserrat(
-                          textStyle: titleStyle, fontWeight: FontWeight.bold),
+                          textStyle: titleStyle,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25.sp),
                     )),
-                    Image.asset('assets/logo.png'),
+                    Image.asset(
+                      'assets/logo.png',
+                      height: 7.h,
+                    ),
                   ],
                 ),
               ),
               Container(
                 color: HexColor('af9f30'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
               Expanded(
                 child: Stack(
                   children: [
                     Container(
                       height: 100.h,
+                      width: width,
                       decoration: BoxDecoration(
                         color: HexColor('dee7f0'),
                       ),
@@ -91,7 +102,7 @@ class _mapsHomeState extends State<mapsHome> {
                         margin: EdgeInsets.only(bottom: 10),
                         child: Image.asset(
                           'assets/MapsPage/NU-building.png',
-                          width: 85.w,
+                          width: width / 2,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -127,7 +138,7 @@ class _mapsHomeState extends State<mapsHome> {
               Container(
                 color: HexColor('061e47'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
             ],
           ),

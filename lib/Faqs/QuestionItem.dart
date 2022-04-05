@@ -24,7 +24,7 @@ class QuestionItem extends StatefulWidget {
 }
 
 class _QuestionItemState extends State<QuestionItem> {
-  final styleText = TextStyle(fontSize: 4.h, color: Colors.white);
+  final styleText = TextStyle(color: Colors.white);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,7 +50,7 @@ class _QuestionItemState extends State<QuestionItem> {
             ),
           ),
           textStyle: MaterialStateProperty.resolveWith(
-            (states) => TextStyle(fontSize: 6.sp, color: Colors.white),
+            (states) => TextStyle(color: Colors.white),
           ),
           elevation: MaterialStateProperty.resolveWith((states) => 5.0),
           backgroundColor: MaterialStateProperty.resolveWith<Color>(
@@ -67,7 +67,9 @@ class _QuestionItemState extends State<QuestionItem> {
           child: Text(
             widget.question.question,
             style: GoogleFonts.montserrat(
-                textStyle: styleText, fontWeight: FontWeight.normal),
+                textStyle: styleText,
+                fontWeight: FontWeight.normal,
+                fontSize: 10.sp),
           ),
         ),
       ),

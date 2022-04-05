@@ -21,7 +21,7 @@ class OfficeItem extends StatelessWidget {
                   )),
         );
       },
-      child: Image.asset(buttonPath, width: 13.w, fit: BoxFit.contain),
+      child: Image.asset(buttonPath, width: 22.w, fit: BoxFit.contain),
     );
   }
 }

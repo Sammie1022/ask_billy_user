@@ -9,6 +9,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
 
+import '../LandingPage/Landingpage.dart';
 import '../MenuBar.dart';
 
 class contactUs extends StatefulWidget {
@@ -17,28 +18,18 @@ class contactUs extends StatefulWidget {
 }
 
 class _contactUsState extends State<contactUs> {
-  var _scaffoldKey = new GlobalKey<ScaffoldState>();
-  final titleStyle = TextStyle(fontSize: 6.h, color: HexColor('061e47'));
-  final btnStyle = TextStyle(fontSize: 3.h, color: Colors.white);
-  final textTitleStyle = TextStyle(fontSize: 7.h, color: HexColor('061e47'));
-  Set<Marker> _markers = {};
-  void _onMapCreated(GoogleMapController controller) {
-    setState(() {
-      _markers.add(
-        Marker(
-          markerId: MarkerId('id-1'),
-          position: LatLng(14.604046, 120.994903),
-          infoWindow: InfoWindow(
-              title: 'National University-Manila',
-              snippet: 'Pamantasang Pambansa'),
-        ),
-      );
-    });
-  }
-
   var size, height, width;
+  var _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final titleStyle = TextStyle(color: HexColor('061e47'));
+  final btnStyle = TextStyle(color: Colors.white);
+  final textTitleStyle = TextStyle(color: HexColor('061e47'));
+  final contentStyle = TextStyle(color: HexColor('061e47'));
   @override
   Widget build(BuildContext context) {
+    // getting the size of the window
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return Scaffold(
         drawerScrimColor: Colors.transparent,
         key: _scaffoldKey,
@@ -48,13 +39,13 @@ class _contactUsState extends State<contactUs> {
         ),
         body: Container(
           height: 100.h,
-          width: 100.w,
+          width: width,
           child: Column(
             children: [
               Container(
                 padding: EdgeInsets.all(6),
-                width: 100.w,
-                height: 12.h,
+                width: width,
+                height: 8.h,
                 decoration: BoxDecoration(
                   color: HexColor('dee7f0'),
                   image: DecorationImage(
@@ -67,7 +58,7 @@ class _contactUsState extends State<contactUs> {
                     GestureDetector(
                       child: Image.asset(
                         'assets/BurgerMenu.png',
-                        height: 7.h,
+                        height: 4.h,
                       ),
                       onTap: () {
                         _scaffoldKey.currentState?.openDrawer();
@@ -79,12 +70,17 @@ class _contactUsState extends State<contactUs> {
                     Text(
                       'About NU',
                       style: GoogleFonts.montserrat(
-                          textStyle: titleStyle, fontWeight: FontWeight.bold),
+                          textStyle: titleStyle,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25.sp),
                     ),
                     Expanded(
                       child: Container(),
                     ),
-                    Image.asset('assets/logo.png'),
+                    Image.asset(
+                      'assets/logo.png',
+                      height: 7.h,
+                    ),
                   ],
                 ),
               ), //TOPBAR
@@ -92,8 +88,9 @@ class _contactUsState extends State<contactUs> {
               Container(
                 color: HexColor('af9f30'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
+
               Expanded(
                 child: Stack(
                   children: [
@@ -120,16 +117,13 @@ class _contactUsState extends State<contactUs> {
                                 );
                               },
                               style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(7)),
-                                  primary: HexColor('af9f30'),
-                                  elevation: 5,
-                                  // padding: EdgeInsets.symmetric(
-                                  //     vertical: 2.h, horizontal: 7.w),
-                                  textStyle: TextStyle(
-                                    fontSize: 6.sp,
-                                    color: Colors.white,
-                                  )),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(7)),
+                                primary: HexColor('af9f30'),
+                                elevation: 5,
+                                // padding: EdgeInsets.symmetric(
+                                //     vertical: 2.h, horizontal: 7.w),
+                              ),
                               icon: Icon(
                                 Icons.info_outline,
                                 size: 4.h,
@@ -138,7 +132,8 @@ class _contactUsState extends State<contactUs> {
                                 'About NU',
                                 style: GoogleFonts.montserrat(
                                     textStyle: btnStyle,
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 10.sp),
                               ),
                             ),
                           ),
@@ -155,16 +150,13 @@ class _contactUsState extends State<contactUs> {
                                 );
                               },
                               style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(7)),
-                                  primary: HexColor('af9f30'),
-                                  elevation: 5,
-                                  // padding: EdgeInsets.symmetric(
-                                  //     vertical: 2.h, horizontal: 7.w),
-                                  textStyle: TextStyle(
-                                    fontSize: 6.sp,
-                                    color: Colors.white,
-                                  )),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(7)),
+                                primary: HexColor('af9f30'),
+                                elevation: 5,
+                                // padding: EdgeInsets.symmetric(
+                                //     vertical: 2.h, horizontal: 7.w),
+                              ),
                               icon: Icon(
                                 Icons.school,
                                 size: 4.h,
@@ -173,7 +165,8 @@ class _contactUsState extends State<contactUs> {
                                 'Scholarship',
                                 style: GoogleFonts.montserrat(
                                     textStyle: btnStyle,
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 10.sp),
                               ),
                             ),
                           ),
@@ -190,16 +183,13 @@ class _contactUsState extends State<contactUs> {
                                 );
                               },
                               style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(7)),
-                                  primary: HexColor('af9f30'),
-                                  elevation: 5,
-                                  // padding: EdgeInsets.symmetric(
-                                  //     vertical: 2.h, horizontal: 7.w),
-                                  textStyle: TextStyle(
-                                    fontSize: 6.sp,
-                                    color: Colors.white,
-                                  )),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(7)),
+                                primary: HexColor('af9f30'),
+                                elevation: 5,
+                                // padding: EdgeInsets.symmetric(
+                                //     vertical: 2.h, horizontal: 7.w),
+                              ),
                               icon: Icon(
                                 Icons.perm_contact_cal,
                                 size: 4.h,
@@ -208,7 +198,8 @@ class _contactUsState extends State<contactUs> {
                                 'Admission',
                                 style: GoogleFonts.montserrat(
                                     textStyle: btnStyle,
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 10.sp),
                               ),
                             ),
                           ),
@@ -225,16 +216,13 @@ class _contactUsState extends State<contactUs> {
                                 );
                               },
                               style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(7)),
-                                  primary: HexColor('061e47'),
-                                  elevation: 5,
-                                  // padding: EdgeInsets.symmetric(
-                                  //     vertical: 2.h, horizontal: 7.w),
-                                  textStyle: TextStyle(
-                                    fontSize: 6.sp,
-                                    color: Colors.white,
-                                  )),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(7)),
+                                primary: HexColor('061e47'),
+                                elevation: 5,
+                                // padding: EdgeInsets.symmetric(
+                                //     vertical: 2.h, horizontal: 7.w),
+                              ),
                               icon: Icon(
                                 Icons.call,
                                 size: 4.h,
@@ -243,47 +231,27 @@ class _contactUsState extends State<contactUs> {
                                 'Contact Us',
                                 style: GoogleFonts.montserrat(
                                     textStyle: btnStyle,
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 10.sp),
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: 5.sp, top: 26.sp),
-                          height: 63.h,
-                          width: 80.w,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                              color: HexColor('230871'),
-                              width: 0.4.w,
-                            ),
-                          ),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.vertical,
-                            padding: EdgeInsets.all(3.sp),
-                            child: Column(
-                              children: [
-                                Container(
-                                  child: GoogleMap(
-                                    onMapCreated: _onMapCreated,
-                                    markers: _markers,
-                                    initialCameraPosition: CameraPosition(
-                                        target: LatLng(14.604046, 120.994903),
-                                        zoom: 15),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                    Container(
+                      height: 65.h,
+                      width: width / 1.3,
+                      margin:
+                          EdgeInsets.only(left: 10.w, top: 10.h, bottom: 5.h),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: Colors.white,
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [],
+                      ),
                     ),
                     Container(
                       alignment: Alignment.bottomLeft,
@@ -306,7 +274,7 @@ class _contactUsState extends State<contactUs> {
               Container(
                 color: HexColor('061e47'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
             ],
           ),

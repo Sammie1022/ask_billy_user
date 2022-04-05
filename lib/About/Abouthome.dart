@@ -19,6 +19,7 @@ class aboutHome extends StatefulWidget {
 }
 
 class _aboutHomeState extends State<aboutHome> {
+  var size, height, width;
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
   final titleStyle = TextStyle(fontSize: 6.h, color: HexColor('061e47'));
   final btnStyle = TextStyle(fontSize: 3.h, color: Colors.white);
@@ -26,6 +27,10 @@ class _aboutHomeState extends State<aboutHome> {
   final contentStyle = TextStyle(fontSize: 3.h, color: HexColor('061e47'));
   @override
   Widget build(BuildContext context) {
+    // getting the size of the window
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return Scaffold(
         drawerScrimColor: Colors.transparent,
         key: _scaffoldKey,
@@ -35,13 +40,13 @@ class _aboutHomeState extends State<aboutHome> {
         ),
         body: Container(
           height: 100.h,
-          width: 100.w,
+          width: width,
           child: Column(
             children: [
               Container(
                 padding: EdgeInsets.all(6),
-                width: 100.w,
-                height: 12.h,
+                width: width,
+                height: 8.h,
                 decoration: BoxDecoration(
                   color: HexColor('dee7f0'),
                   image: DecorationImage(
@@ -54,7 +59,7 @@ class _aboutHomeState extends State<aboutHome> {
                     GestureDetector(
                       child: Image.asset(
                         'assets/BurgerMenu.png',
-                        height: 7.h,
+                        height: 4.h,
                       ),
                       onTap: () {
                         _scaffoldKey.currentState?.openDrawer();
@@ -66,12 +71,17 @@ class _aboutHomeState extends State<aboutHome> {
                     Text(
                       'About NU',
                       style: GoogleFonts.montserrat(
-                          textStyle: titleStyle, fontWeight: FontWeight.bold),
+                          textStyle: titleStyle,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25.sp),
                     ),
                     Expanded(
                       child: Container(),
                     ),
-                    Image.asset('assets/logo.png'),
+                    Image.asset(
+                      'assets/logo.png',
+                      height: 7.h,
+                    ),
                   ],
                 ),
               ), //TOPBAR
@@ -79,7 +89,7 @@ class _aboutHomeState extends State<aboutHome> {
               Container(
                 color: HexColor('af9f30'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
 
               Expanded(
@@ -123,7 +133,8 @@ class _aboutHomeState extends State<aboutHome> {
                                 'About NU',
                                 style: GoogleFonts.montserrat(
                                     textStyle: btnStyle,
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 10.sp),
                               ),
                             ),
                           ),
@@ -155,7 +166,8 @@ class _aboutHomeState extends State<aboutHome> {
                                 'Scholarship',
                                 style: GoogleFonts.montserrat(
                                     textStyle: btnStyle,
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 10.sp),
                               ),
                             ),
                           ),
@@ -187,7 +199,8 @@ class _aboutHomeState extends State<aboutHome> {
                                 'Admission',
                                 style: GoogleFonts.montserrat(
                                     textStyle: btnStyle,
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 10.sp),
                               ),
                             ),
                           ),
@@ -219,7 +232,8 @@ class _aboutHomeState extends State<aboutHome> {
                                 'Contact Us',
                                 style: GoogleFonts.montserrat(
                                     textStyle: btnStyle,
-                                    fontWeight: FontWeight.w600),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 10.sp),
                               ),
                             ),
                           ),
@@ -228,8 +242,9 @@ class _aboutHomeState extends State<aboutHome> {
                     ),
                     Container(
                       height: 65.h,
-                      width: 80.w,
-                      margin: EdgeInsets.only(left: 10.w, top: 15.h),
+                      width: width / 1.3,
+                      margin:
+                          EdgeInsets.only(left: 10.w, top: 10.h, bottom: 5.h),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.0),
                         color: Colors.white,
@@ -243,13 +258,12 @@ class _aboutHomeState extends State<aboutHome> {
                             padding: EdgeInsets.all(2.sp),
                             color: Colors.white,
                             height: 59.h,
-                            width: 20.w,
+                            width: 38.w,
                             child: SingleChildScrollView(
                                 child: Column(
                               children: [
                                 SizedBox(
-                                  height: 8.h,
-                                  width: 24.w,
+                                  width: 30.w,
                                   child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
@@ -269,7 +283,8 @@ class _aboutHomeState extends State<aboutHome> {
                                       'Brief History',
                                       style: GoogleFonts.montserrat(
                                           textStyle: btnStyle,
-                                          fontWeight: FontWeight.w500),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 10.sp),
                                     ),
                                   ),
                                 ),
@@ -277,8 +292,7 @@ class _aboutHomeState extends State<aboutHome> {
                                   height: 1.h,
                                 ),
                                 SizedBox(
-                                  height: 8.h,
-                                  width: 24.w,
+                                  width: 30.w,
                                   child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
@@ -289,16 +303,17 @@ class _aboutHomeState extends State<aboutHome> {
                                       );
                                     },
                                     style: ElevatedButton.styleFrom(
-                                        primary: HexColor('af9f30'),
-                                        elevation: 5,
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 1.h, horizontal: 1.w),
-                                        textStyle: TextStyle(fontSize: 6.sp)),
+                                      primary: HexColor('af9f30'),
+                                      elevation: 5,
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 1.h, horizontal: 1.w),
+                                    ),
                                     child: Text(
                                       'Mission and Vision',
                                       style: GoogleFonts.montserrat(
                                           textStyle: btnStyle,
-                                          fontWeight: FontWeight.w500),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 10.sp),
                                     ),
                                   ),
                                 ),
@@ -306,8 +321,7 @@ class _aboutHomeState extends State<aboutHome> {
                                   height: 1.h,
                                 ),
                                 SizedBox(
-                                  height: 8.h,
-                                  width: 24.w,
+                                  width: 30.w,
                                   child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
@@ -327,7 +341,9 @@ class _aboutHomeState extends State<aboutHome> {
                                       'Core Values',
                                       style: GoogleFonts.montserrat(
                                           textStyle: btnStyle,
-                                          fontWeight: FontWeight.w500),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 10.sp),
+                                      textAlign: TextAlign.start,
                                     ),
                                   ),
                                 ),
@@ -335,8 +351,7 @@ class _aboutHomeState extends State<aboutHome> {
                                   height: 1.h,
                                 ),
                                 SizedBox(
-                                  height: 8.h,
-                                  width: 24.w,
+                                  width: 30.w,
                                   child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
@@ -358,7 +373,8 @@ class _aboutHomeState extends State<aboutHome> {
                                           'Gain',
                                           style: GoogleFonts.montserrat(
                                               textStyle: btnStyle,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 10.sp),
                                         ),
                                       ],
                                     ),
@@ -368,8 +384,7 @@ class _aboutHomeState extends State<aboutHome> {
                                   height: 1.h,
                                 ),
                                 SizedBox(
-                                  height: 8.h,
-                                  width: 24.w,
+                                  width: 30.w,
                                   child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
@@ -389,7 +404,8 @@ class _aboutHomeState extends State<aboutHome> {
                                       'QuaWORlity Policy',
                                       style: GoogleFonts.montserrat(
                                           textStyle: btnStyle,
-                                          fontWeight: FontWeight.w500),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 10.sp),
                                       textAlign: TextAlign.start,
                                     ),
                                   ),
@@ -412,13 +428,14 @@ class _aboutHomeState extends State<aboutHome> {
                                   'Title Here',
                                   style: GoogleFonts.montserrat(
                                       textStyle: textTitleStyle,
-                                      fontWeight: FontWeight.w500),
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 17.sp),
                                 ),
                                 margin: EdgeInsets.only(left: 1.w),
                               ),
                               Container(
-                                height: 1.h,
-                                width: 59.w,
+                                height: .3.h,
+                                width: width / 1.8,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8.0),
                                     color: HexColor('af9f30')),
@@ -426,8 +443,8 @@ class _aboutHomeState extends State<aboutHome> {
                               Container(
                                 margin: EdgeInsets.only(
                                     left: 1.sp, bottom: 1.sp, right: 1.sp),
-                                height: 50.h,
-                                width: 57.w,
+                                height: height / 2.2,
+                                width: width / 1.8,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                 ),
@@ -445,7 +462,8 @@ The University may also be reached by way of Espana Street from points North or 
 From Antipolo, Cainta, Marikina, Pasig and surrounding communities, the University can be reached by taking the LRT Marikina Santolan Station and alight at the Legarda Station, then proceed towards the Sampaloc church, turn right to F. Jhocson Street.''',
                                     style: GoogleFonts.montserrat(
                                         textStyle: contentStyle,
-                                        fontWeight: FontWeight.normal),
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 9.sp),
                                   ),
                                 ),
                               ),
@@ -475,7 +493,7 @@ From Antipolo, Cainta, Marikina, Pasig and surrounding communities, the Universi
               Container(
                 color: HexColor('061e47'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
             ],
           ),

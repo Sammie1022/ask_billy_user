@@ -6,132 +6,64 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
 
-// class loadingPage extends StatefulWidget {
-//   @override
-//   _loadingPageState createState() => _loadingPageState();
-// }
-//
-// class _loadingPageState extends State<loadingPage> {
-//   @override
-//   void initState() {
-//     super.initState();
-//     Timer(
-//         Duration(seconds: 20),
-//         () => Navigator.pushReplacement(
-//             context, MaterialPageRoute(builder: (context) => homePage())));
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         body: Container(
-//       height: 100.h,
-//       width: 100.w,
-//       child: Column(
-//         children: [
-//           Expanded(
-//             child: Column(
-//               children: [
-//                 Container(
-//                   height: 100.h,
-//                   decoration: BoxDecoration(
-//                       gradient: LinearGradient(
-//                           begin: Alignment.topCenter,
-//                           end: Alignment.bottomCenter,
-//                           colors: [HexColor('edf4fc'), HexColor('c8d9f3')])),
-//                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25.w),
-//                   child: Opacity(
-//                     opacity: 0.1,
-//                     child: Image.asset('assets/logo.png',
-//                         width: 50.w, height: 50.h, fit: BoxFit.contain),
-//                   ),
-//                 ),
-//                 Container(
-//                   alignment: Alignment.center,
-//                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25.w),
-//                   child: Image.asset('assets/LoadingPage/welcome-font.gif',
-//                       width: 100.w, height: 100.h, fit: BoxFit.contain),
-//                 ),
-//                 // SizedBox(
-//                 //   width: 10.w,
-//                 // ),
-//                 Container(
-//                   alignment: Alignment.bottomLeft,
-//                   padding: EdgeInsets.only(bottom: 10),
-//                   child: Image.asset('assets/LoadingPage/walking-billy.gif',
-//                       width: 45.w, height: 45.h, fit: BoxFit.contain),
-//                 )
-//               ],
-//             ),
-//           ),
-//         ],
-//       ),
-//     ));
-//   }
-// }
-// class loadingPage extends StatefulWidget {
-//   const loadingPage({Key? key}) : super(key: key);
-//
-//   @override
-//   State<loadingPage> createState() => _loadingPageState();
-// }
-//
-// class _loadingPageState extends State<loadingPage> {
-//   @override
-//   void initState() {
-//     super.initState();
-//     Timer(
-//         Duration(seconds: 1000),
-//         () => Navigator.pushReplacement(
-//             context, MaterialPageRoute(builder: (context) => homePage())));
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     var width = MediaQuery.of(context).size.width;
-//     return Scaffold(
-//         body: Container(
-//       height: 100.h,
-//       width: 1300,
-//       child: Column(
-//         children: [
-//           Expanded(
-//             child: Column(
-//               children: [
-//                 Container(
-//                   height: 58.1.h,
-//                   decoration: BoxDecoration(
-//                       gradient: LinearGradient(
-//                           begin: Alignment.topCenter,
-//                           end: Alignment.bottomCenter,
-//                           colors: [HexColor('edf4fc'), HexColor('c8d9f3')])),
-//                   padding: EdgeInsets.symmetric(horizontal: 63.w),
-//                   child: Container(
-//                     alignment: Alignment.center,
-//                     child: Opacity(
-//                       opacity: 0.1,
-//                       child: Image.asset('assets/logo.png',
-//                           width: 60.w, height: 60.h, fit: BoxFit.contain),
-//                     ),
-//                   ),
-//                 ),
-//                 // Container(
-//                 //   alignment: Alignment.center,
-//                 //   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25.w),
-//                 //   child: Image.asset('assets/LoadingPage/welcome-font.gif',
-//                 //       width: 100.w, height: 100.h, fit: BoxFit.contain),
-//                 // ),
-//                 // Container(
-//                 //   alignment: Alignment.bottomLeft,
-//                 //   padding: EdgeInsets.only(bottom: 10),
-//                 //   child: Image.asset('assets/LoadingPage/walking-billy.gif',
-//                 //       width: 45.w, height: 45.h, fit: BoxFit.contain),
-//                 // )
-//               ],
-//             ),
-//           ),
-//         ],
-//       ),
-//     ));
-//   }
-// }
+class LoadingPage extends StatefulWidget {
+  const LoadingPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoadingPage> createState() => _LoadingPageState();
+}
+
+class _LoadingPageState extends State<LoadingPage> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 14),
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => homePage())));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromRGBO(237, 244, 252, 1),
+                  Color.fromRGBO(200, 217, 243, 1)
+                ]),
+            image: DecorationImage(
+                opacity: .1,
+                image: AssetImage('assets/logo.png'),
+                fit: BoxFit.contain)),
+        height: 100.h,
+        width: width,
+        child: Row(
+          children: [
+            Container(
+              // color: Colors.red,
+              width: width / 3,
+              alignment: Alignment.bottomLeft,
+              child: Image.asset(
+                'assets/LoadingPage/walking-billy.gif',
+                fit: BoxFit.contain,
+              ),
+            ),
+            SizedBox(
+              width: width / 3,
+              // color: Colors.blue,
+              child: Image.asset(
+                'assets/LoadingPage/welcome-font.gif',
+                fit: BoxFit.contain,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

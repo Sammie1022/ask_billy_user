@@ -23,6 +23,7 @@ class mainBuilding extends StatefulWidget {
 }
 
 class _mainBuildingState extends State<mainBuilding> {
+  var size, height, width;
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
   final titleStyle = TextStyle(fontSize: 6.h, color: HexColor('061e47'));
   final btnStyle = TextStyle(fontSize: 3.h, color: Colors.white);
@@ -57,6 +58,10 @@ class _mainBuildingState extends State<mainBuilding> {
 
   @override
   Widget build(BuildContext context) {
+    // getting the size of the window
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return Scaffold(
         drawerScrimColor: Colors.transparent,
         key: _scaffoldKey,
@@ -66,13 +71,13 @@ class _mainBuildingState extends State<mainBuilding> {
         ),
         body: Container(
           height: 100.h,
-          width: 100.w,
+          width: width,
           child: Column(
             children: [
               Container(
                 padding: EdgeInsets.all(6),
-                width: 100.w,
-                height: 12.h,
+                width: width,
+                height: 8.h,
                 decoration: BoxDecoration(
                   color: HexColor('dee7f0'),
                   image: DecorationImage(
@@ -85,7 +90,7 @@ class _mainBuildingState extends State<mainBuilding> {
                     GestureDetector(
                       child: Image.asset(
                         'assets/BurgerMenu.png',
-                        height: 7.h,
+                        height: 4.h,
                       ),
                       onTap: () {
                         _scaffoldKey.currentState?.openDrawer();
@@ -98,16 +103,21 @@ class _mainBuildingState extends State<mainBuilding> {
                         child: Text(
                       widget.buildingName,
                       style: GoogleFonts.montserrat(
-                          textStyle: titleStyle, fontWeight: FontWeight.bold),
+                          textStyle: titleStyle,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25.sp),
                     )),
-                    Image.asset('assets/logo.png'),
+                    Image.asset(
+                      'assets/logo.png',
+                      height: 7.h,
+                    ),
                   ],
                 ),
               ),
               Container(
                 color: HexColor('af9f30'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
               Expanded(
                 child: FutureBuilder(
@@ -130,7 +140,7 @@ class _mainBuildingState extends State<mainBuilding> {
                               margin: EdgeInsets.only(bottom: 10, left: 25),
                               child: Image.asset(
                                 'assets/MapsPage/MB.png',
-                                width: 67.w,
+                                width: width / 2,
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -194,7 +204,7 @@ class _mainBuildingState extends State<mainBuilding> {
               Container(
                 color: HexColor('061e47'),
                 height: 2.h,
-                width: 100.w,
+                width: width,
               ),
             ],
           ),
@@ -203,7 +213,7 @@ class _mainBuildingState extends State<mainBuilding> {
 
   Widget _floorButton(Floor floor) {
     return Container(
-      width: 16.5.w,
+      width: 25.w,
       margin: EdgeInsets.symmetric(vertical: 0.25.h),
       child: ElevatedButton(
         onPressed: () {
@@ -224,7 +234,9 @@ class _mainBuildingState extends State<mainBuilding> {
         child: Text(
           floor.floor_number,
           style: GoogleFonts.montserrat(
-              textStyle: btnStyle, fontWeight: FontWeight.w500),
+              textStyle: btnStyle,
+              fontWeight: FontWeight.w500,
+              fontSize: 10.sp),
         ),
       ),
     );
@@ -232,7 +244,7 @@ class _mainBuildingState extends State<mainBuilding> {
 
   Widget _facilityButton(Facility facility) {
     return Container(
-      width: 15.w,
+      width: 25.w,
       margin: EdgeInsets.symmetric(vertical: 0.25.h),
       child: ElevatedButton(
         onPressed: () {
@@ -257,7 +269,9 @@ class _mainBuildingState extends State<mainBuilding> {
           facility.facility_name,
           textAlign: TextAlign.center,
           style: GoogleFonts.montserrat(
-              textStyle: btnStyle, fontWeight: FontWeight.w500),
+              textStyle: btnStyle,
+              fontWeight: FontWeight.w500,
+              fontSize: 10.sp),
         ),
       ),
     );

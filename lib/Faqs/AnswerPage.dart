@@ -31,10 +31,11 @@ class AnswerPage extends StatefulWidget {
 enum TtsState { playing, stopped, paused, continued }
 
 class _AnswerPageState extends State<AnswerPage> {
+  var size, height, width;
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
-  final titleStyle = TextStyle(fontSize: 6.h, color: HexColor('061e47'));
-  final styleText = TextStyle(fontSize: 2.2.h, color: HexColor('061e47'));
-  final answerText = TextStyle(fontSize: 4.h, color: HexColor('061e47'));
+  final titleStyle = TextStyle(color: HexColor('061e47'));
+  final styleText = TextStyle(color: HexColor('061e47'));
+  final answerText = TextStyle(color: HexColor('061e47'));
   late FlutterTts flutterTts;
   late VideoPlayerController _controller;
   TtsState ttsState = TtsState.playing;
@@ -85,7 +86,6 @@ class _AnswerPageState extends State<AnswerPage> {
         ttsState = TtsState.stopped;
       });
     });
-
   }
 
   Future _setAwaitOptions() async {
@@ -102,6 +102,10 @@ class _AnswerPageState extends State<AnswerPage> {
 
   @override
   Widget build(BuildContext context) {
+    // getting the size of the window
+    size = MediaQuery.of(context).size;
+    height = size.height;
+    width = size.width;
     return Scaffold(
       drawerScrimColor: Colors.transparent,
       key: _scaffoldKey,
@@ -111,13 +115,13 @@ class _AnswerPageState extends State<AnswerPage> {
       ),
       body: Container(
         height: 100.h,
-        width: 100.w,
+        width: width,
         child: Column(
           children: [
             Container(
               padding: EdgeInsets.all(6),
-              width: 100.w,
-              height: 12.h,
+              width: width,
+              height: 8.h,
               decoration: BoxDecoration(
                 color: HexColor('dee7f0'),
                 image: DecorationImage(
@@ -130,7 +134,7 @@ class _AnswerPageState extends State<AnswerPage> {
                   GestureDetector(
                     child: Image.asset(
                       'assets/BurgerMenu.png',
-                      height: 7.h,
+                      height: 4.h,
                     ),
                     onTap: () {
                       _scaffoldKey.currentState?.openDrawer();
@@ -143,7 +147,9 @@ class _AnswerPageState extends State<AnswerPage> {
                     child: Text(
                       widget.officeName,
                       style: GoogleFonts.montserrat(
-                          textStyle: titleStyle, fontWeight: FontWeight.bold),
+                          textStyle: titleStyle,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17.sp),
                     ),
                   ),
                   Container(
@@ -156,31 +162,34 @@ class _AnswerPageState extends State<AnswerPage> {
                           widget.office.location,
                           style: GoogleFonts.montserrat(
                               textStyle: styleText,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 6.sp),
                         ),
                         Text(
                           widget.office.office_hours,
                           style: GoogleFonts.montserrat(
                               textStyle: styleText,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 6.sp),
                         ),
                         Text(
                           widget.office.office_email,
                           style: GoogleFonts.montserrat(
                               textStyle: styleText,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 6.sp),
                         ),
                       ],
                     ),
                   ),
-                  Image.asset('assets/logo.png'),
+                  Image.asset('assets/logo.png', height: 7.h),
                 ],
               ),
             ), //TOPBAR
             Container(
               color: HexColor('af9f30'),
               height: 2.h,
-              width: 100.w,
+              width: width,
             ),
             Expanded(
               child: Stack(
@@ -193,17 +202,18 @@ class _AnswerPageState extends State<AnswerPage> {
                   ),
                   Container(
                     alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                    padding: EdgeInsets.symmetric(vertical: 4.h),
                     // padding: EdgeInsets.only(right: 10.sp, bottom: 10.sp),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: 5.sp,
+                          height: 2.sp,
                         ),
                         _question(widget.question.question),
                         Container(
-                          height: 45.h,
-                          width: 80.w,
+                          height: height / 2,
+                          width: width / 2,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
                               color: Colors.white),
@@ -212,7 +222,7 @@ class _AnswerPageState extends State<AnswerPage> {
                             children: [
                               Container(
                                 height: 55.h,
-                                width: 30.w,
+                                width: width / 3,
                                 color: Colors.white,
                                 alignment: Alignment.center,
                                 child: SingleChildScrollView(
@@ -235,19 +245,22 @@ class _AnswerPageState extends State<AnswerPage> {
                               ),
                               Container(
                                 height: 55.h,
-                                width: 45.w,
-                                color: Colors.white,           alignment: Alignment.center,
+                                width: width / 3,
+                                color: Colors.white,
+                                alignment: Alignment.center,
                                 child: SingleChildScrollView(
                                   child: Column(
                                     children: [
                                       SizedBox(
                                         height: 20,
+                                        width: 1.w,
                                       ),
                                       Text(
                                         widget.question.answer,
                                         style: GoogleFonts.montserrat(
                                             textStyle: answerText,
-                                            fontWeight: FontWeight.normal),
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 10.sp),
                                       ),
                                     ],
                                   ),
@@ -280,7 +293,7 @@ class _AnswerPageState extends State<AnswerPage> {
             Container(
               color: HexColor('061e47'),
               height: 2.h,
-              width: 100.w,
+              width: width,
             ),
           ],
         ),
@@ -303,7 +316,7 @@ class _AnswerPageState extends State<AnswerPage> {
             ),
           ),
           textStyle: MaterialStateProperty.resolveWith(
-            (states) => TextStyle(fontSize: 6.sp, color: Colors.white),
+            (states) => TextStyle(fontSize: 10.sp, color: Colors.white),
           ),
           elevation: MaterialStateProperty.resolveWith((states) => 5.0),
           backgroundColor: MaterialStateProperty.resolveWith<Color>(

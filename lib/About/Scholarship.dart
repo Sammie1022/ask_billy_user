@@ -366,16 +366,12 @@ class _ScholarshipState extends State<Scholarship> {
                                         padding: EdgeInsets.symmetric(
                                             vertical: 1.h, horizontal: 1.w),
                                         textStyle: TextStyle(fontSize: 6.sp)),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'Nationalian Scholarship Program',
-                                          style: GoogleFonts.montserrat(
-                                              textStyle: btnStyle,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 10.sp),
-                                        ),
-                                      ],
+                                    child: Text(
+                                      'Nationalian Scholarship Program',
+                                      style: GoogleFonts.montserrat(
+                                          textStyle: btnStyle,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 10.sp),
                                     ),
                                   ),
                                 ),
@@ -532,7 +528,7 @@ class _ScholarshipState extends State<Scholarship> {
                               Container(
                                 margin: EdgeInsets.only(
                                     left: 1.sp, bottom: 1.sp, right: 1.sp),
-                                height: height / 2.2,
+                                height: height / 2.7,
                                 width: width / 1.8,
                                 decoration: BoxDecoration(
                                   color: Colors.white,

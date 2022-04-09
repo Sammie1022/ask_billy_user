@@ -250,7 +250,169 @@ class _contactUsState extends State<contactUs> {
                       ),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [],
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                                left: 1.sp, top: 1.sp, bottom: 1.sp),
+                            padding: EdgeInsets.all(2.sp),
+                            color: Colors.white,
+                            height: 59.h,
+                            width: 38.w,
+                            child: SingleChildScrollView(
+                                child: Column(
+                              children: [
+                                SizedBox(
+                                  width: 30.w,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                landingPage()),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        primary: HexColor('af9f30'),
+                                        elevation: 5,
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 1.h, horizontal: 1.w),
+                                        textStyle: TextStyle(fontSize: 6.sp)),
+                                    child: Text(
+                                      'University Location',
+                                      style: GoogleFonts.montserrat(
+                                          textStyle: btnStyle,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 10.sp),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 1.h,
+                                ),
+                                SizedBox(
+                                  width: 30.w,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                landingPage()),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        primary: HexColor('af9f30'),
+                                        elevation: 5,
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 1.h, horizontal: 1.w),
+                                        textStyle: TextStyle(fontSize: 6.sp)),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Colleges',
+                                          style: GoogleFonts.montserrat(
+                                              textStyle: btnStyle,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 10.sp),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 1.h,
+                                ),
+                                SizedBox(
+                                  width: 30.w,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                landingPage()),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        primary: HexColor('af9f30'),
+                                        elevation: 5,
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 1.h, horizontal: 1.w),
+                                        textStyle: TextStyle(fontSize: 6.sp)),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Offices',
+                                          style: GoogleFonts.montserrat(
+                                              textStyle: btnStyle,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 10.sp),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                          ),
+                          Container(
+                            height: 75.h,
+                            width: .5.w,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.0),
+                                color: HexColor('af9f30')),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                child: Text(
+                                  'Title Here',
+                                  style: GoogleFonts.montserrat(
+                                      textStyle: textTitleStyle,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 17.sp),
+                                ),
+                                margin: EdgeInsets.only(left: 1.w),
+                              ),
+                              Container(
+                                height: .3.h,
+                                width: width / 1.8,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    color: HexColor('af9f30')),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 1.sp, bottom: 1.sp, right: 1.sp),
+                                height: height / 2.7,
+                                width: width / 1.8,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                ),
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.vertical,
+                                  padding: EdgeInsets.all(3.sp),
+                                  child: Text(
+                                    '''University Location
+The University can easily be reached from any part of the City of Manila by using the ordinary means of transportation.
+
+From Quiapo, one may take jeepney plying the Quiapo Lealtad route at Barbosa Street in Quiapo and then alight at a point on F. Jhocson: if preferred, one may take Balic-Balic bound jeepney and alight at the corner of G. Tuazon and M. F. Jhocson Streets.
+
+The University may also be reached by way of Espana Street from points North or Northwest through Cayco Street, then turn right through F. Jhocson Street to M. F. Jhocson Street; from points Northwest through Earnshaw Street, turn left through Cayco then right through F. Jhocson to M. F. Jhocson.
+
+From Antipolo, Cainta, Marikina, Pasig and surrounding communities, the University can be reached by taking the LRT Marikina Santolan Station and alight at the Legarda Station, then proceed towards the Sampaloc church, turn right to F. Jhocson Street.''',
+                                    style: GoogleFonts.montserrat(
+                                        textStyle: contentStyle,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 9.sp),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                     Container(

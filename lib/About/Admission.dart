@@ -281,70 +281,16 @@ class _AdmissionState extends State<Admission> {
                                         padding: EdgeInsets.symmetric(
                                             vertical: 1.h, horizontal: 1.w),
                                         textStyle: TextStyle(fontSize: 6.sp)),
-                                    child: Text(
-                                      'Freshmen',
-                                      style: GoogleFonts.montserrat(
-                                          textStyle: btnStyle,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 10.sp),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 1.h,
-                                ),
-                                SizedBox(
-                                  width: 30.w,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                landingPage()),
-                                      );
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        primary: HexColor('af9f30'),
-                                        elevation: 5,
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 1.h, horizontal: 1.w),
-                                        textStyle: TextStyle(fontSize: 6.sp)),
-                                    child: Text(
-                                      'Transferees',
-                                      style: GoogleFonts.montserrat(
-                                          textStyle: btnStyle,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 10.sp),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 1.h,
-                                ),
-                                SizedBox(
-                                  width: 30.w,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                landingPage()),
-                                      );
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        primary: HexColor('af9f30'),
-                                        elevation: 5,
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 1.h, horizontal: 1.w),
-                                        textStyle: TextStyle(fontSize: 6.sp)),
-                                    child: Text(
-                                      'Cross-Enrollee',
-                                      style: GoogleFonts.montserrat(
-                                          textStyle: btnStyle,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 10.sp),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Freshmen',
+                                          style: GoogleFonts.montserrat(
+                                              textStyle: btnStyle,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 10.sp),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -371,13 +317,75 @@ class _AdmissionState extends State<Admission> {
                                     child: Row(
                                       children: [
                                         Text(
-                                          'International Students',
+                                          'Transferees',
                                           style: GoogleFonts.montserrat(
                                               textStyle: btnStyle,
                                               fontWeight: FontWeight.w500,
                                               fontSize: 10.sp),
                                         ),
                                       ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 1.h,
+                                ),
+                                SizedBox(
+                                  width: 30.w,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                landingPage()),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        primary: HexColor('af9f30'),
+                                        elevation: 5,
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 1.h, horizontal: 1.w),
+                                        textStyle: TextStyle(fontSize: 6.sp)),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Cross-Enrollee',
+                                          style: GoogleFonts.montserrat(
+                                              textStyle: btnStyle,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 10.sp),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 1.h,
+                                ),
+                                SizedBox(
+                                  width: 30.w,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                landingPage()),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        primary: HexColor('af9f30'),
+                                        elevation: 5,
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 1.h, horizontal: 1.w),
+                                        textStyle: TextStyle(fontSize: 6.sp)),
+                                    child: Text(
+                                      'International Students',
+                                      style: GoogleFonts.montserrat(
+                                          textStyle: btnStyle,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 10.sp),
                                     ),
                                   ),
                                 ),
@@ -474,7 +482,7 @@ class _AdmissionState extends State<Admission> {
                               Container(
                                 margin: EdgeInsets.only(
                                     left: 1.sp, bottom: 1.sp, right: 1.sp),
-                                height: height / 2.2,
+                                height: height / 2.7,
                                 width: width / 1.8,
                                 decoration: BoxDecoration(
                                   color: Colors.white,

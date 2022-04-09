@@ -28,7 +28,7 @@ class _QuestionItemState extends State<QuestionItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 3.h, left: 10.w, right: 10.w),
+      margin: EdgeInsets.only(bottom: 1.h, left: 10.w, right: 10.w),
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () {

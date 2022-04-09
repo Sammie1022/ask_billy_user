@@ -83,6 +83,7 @@ flutter:
     - assets/Paws.png
     - assets/BurgerMenu.png
     - assets/BackBtn.png
+    - assets/NU_Map.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -207,13 +207,13 @@ class _AnswerPageState extends State<AnswerPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          height: 2.sp,
-                        ),
+                        // SizedBox(
+                        //   height: 2.sp,
+                        // ),
                         _question(widget.question.question),
                         Container(
                           height: height / 2,
-                          width: width / 2,
+                          width: width / 1.3,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
                               color: Colors.white),
@@ -221,34 +221,36 @@ class _AnswerPageState extends State<AnswerPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                height: 55.h,
-                                width: width / 3,
+                                // margin: EdgeInsets.only(bottom: 5.h),
+                                height: 28.h,
+                                width: width / 2.7,
                                 color: Colors.white,
                                 alignment: Alignment.center,
                                 child: SingleChildScrollView(
                                   child: Column(
                                     children: [
-                                      SizedBox(
-                                        height: 30,
-                                      ),
+                                      // SizedBox(
+                                      //   height: 30,
+                                      // ),
                                       VideoPlayer(_controller)
                                     ],
                                   ),
                                 ),
                               ),
                               Container(
-                                height: 60.h,
+                                height: 28.6.h,
                                 width: .5.w,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8.0),
                                     color: HexColor('af9f30')),
                               ),
                               Container(
-                                height: 55.h,
-                                width: width / 3,
+                                height: 28.h,
+                                width: width / 2.7,
                                 color: Colors.white,
                                 alignment: Alignment.center,
                                 child: SingleChildScrollView(
+                                  padding: EdgeInsets.only(left: 2.w),
                                   child: Column(
                                     children: [
                                       SizedBox(

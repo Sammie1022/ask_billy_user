@@ -279,12 +279,16 @@ class _aboutHomeState extends State<aboutHome> {
                                         padding: EdgeInsets.symmetric(
                                             vertical: 1.h, horizontal: 1.w),
                                         textStyle: TextStyle(fontSize: 6.sp)),
-                                    child: Text(
-                                      'Brief History',
-                                      style: GoogleFonts.montserrat(
-                                          textStyle: btnStyle,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 10.sp),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Brief History',
+                                          style: GoogleFonts.montserrat(
+                                              textStyle: btnStyle,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 10.sp),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -337,13 +341,17 @@ class _aboutHomeState extends State<aboutHome> {
                                         padding: EdgeInsets.symmetric(
                                             vertical: 1.h, horizontal: 1.w),
                                         textStyle: TextStyle(fontSize: 6.sp)),
-                                    child: Text(
-                                      'Core Values',
-                                      style: GoogleFonts.montserrat(
-                                          textStyle: btnStyle,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 10.sp),
-                                      textAlign: TextAlign.start,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Core Values',
+                                          style: GoogleFonts.montserrat(
+                                              textStyle: btnStyle,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 10.sp),
+                                          textAlign: TextAlign.start,
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -368,6 +376,8 @@ class _aboutHomeState extends State<aboutHome> {
                                             vertical: 1.h, horizontal: 1.w),
                                         textStyle: TextStyle(fontSize: 6.sp)),
                                     child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Gain',
@@ -443,7 +453,7 @@ class _aboutHomeState extends State<aboutHome> {
                               Container(
                                 margin: EdgeInsets.only(
                                     left: 1.sp, bottom: 1.sp, right: 1.sp),
-                                height: height / 2.2,
+                                height: height / 2.7,
                                 width: width / 1.8,
                                 decoration: BoxDecoration(
                                   color: Colors.white,

@@ -13,6 +13,8 @@ import '../Classes/Office.dart';
 import '../Classes/Question.dart';
 import 'package:video_player/video_player.dart';
 
+import 'AnswerPage.dart';
+
 class AnswerPage extends StatefulWidget {
   final Question question;
   final Office office;

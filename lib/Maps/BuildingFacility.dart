@@ -145,8 +145,9 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Container(
-                                height: 20.h,
-                                width: 34.w,
+                                //color: Colors.red,
+                                height: 15.h,
+                                width: 60.w,
                                 alignment: Alignment.center,
                                 //margin: EdgeInsets.only(left: 2.sp),
 
@@ -164,7 +165,7 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                                     color: HexColor('af9f30')),
                               ),
                               Container(
-                                height: 20.h,
+                                height: 15.h,
                                 width: 32.5.w,
                                 alignment: Alignment.center,
                                 // margin: EdgeInsets.only(left: 2.sp),
@@ -175,7 +176,8 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                                   style: GoogleFonts.montserrat(
                                       textStyle: styleText,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 10.sp),
+                                      fontSize: 9.sp,
+                                      color: HexColor('061e47')),
                                 ),
                               ),
                             ],
@@ -203,7 +205,7 @@ class _BuildingFacilityState extends State<BuildingFacility> {
               ),
               Container(
                 color: HexColor('061e47'),
-                height: 2.h,
+                height: 1.5.h,
                 width: width,
               ),
             ],

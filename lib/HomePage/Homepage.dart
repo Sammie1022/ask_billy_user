@@ -33,13 +33,6 @@ class _homePageState extends State<homePage> {
     _controller.setLooping(true);
     _controller.initialize().then((_) => setState(() {}));
     _controller.play();
-    // ..initialize().then((_) {
-    //   // Once the video has been loaded we play the video and set looping to true.
-    //   _controller.play();
-    //   _controller.setLooping(true);
-    //   // Ensure the first frame is shown after the video is initialized.
-    //   setState(() {});
-    // });
   }
 
   @override

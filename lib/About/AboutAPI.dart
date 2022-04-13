@@ -5,9 +5,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 class AboutAPI {
   Dio dio = new Dio();
 
-  getAbout() async {
+  getCategories() async {
     try {
-      return await dio.post('https://project-billy.herokuapp.com/',
+      return await dio.post('https://project-billy.herokuapp.com/getCategories',
           options: Options(contentType: Headers.formUrlEncodedContentType));
     } on DioError catch (e) {
       Fluttertoast.showToast(

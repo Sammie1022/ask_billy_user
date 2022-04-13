@@ -1,12 +1,14 @@
+import 'package:abigail_askbilly/About/AboutAPI.dart';
 import 'package:abigail_askbilly/About/AboutItem.dart';
 import 'package:abigail_askbilly/About/Admission.dart';
 import 'package:abigail_askbilly/About/ContactUs.dart';
 import 'package:abigail_askbilly/About/Scholarship.dart';
 import 'package:abigail_askbilly/About/Trial.dart';
-import 'package:abigail_askbilly/Classes/AboutButton.dart';
+import 'package:abigail_askbilly/Classes/About.dart';
 import 'package:abigail_askbilly/HomePage/Homepage.dart';
 import 'package:abigail_askbilly/LoadingPage/Loadingpage.dart';
 import 'package:abigail_askbilly/Maps/Mapshome.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,23 +31,19 @@ class _aboutHomeState extends State<aboutHome> {
   final textTitleStyle = TextStyle(fontSize: 7.h, color: HexColor('061e47'));
   final contentStyle = TextStyle(fontSize: 3.h, color: HexColor('061e47'));
 
-  late Future<AboutButton> futureAbout;
-  List<AboutButton> menuButtons = [
-    AboutButton(icon: Icons.info_outline, label: "About NU"),
-    AboutButton(icon: Icons.school, label: "Scholarship"),
-    AboutButton(icon: Icons.perm_contact_cal, label: "Admission"),
-    AboutButton(icon: Icons.call, label: "Contact Us"),
-  ];
-
+  late Future<About> futureAbout;
+  List<About> menuButtons = [];
 
   @override
   void initState() {
     super.initState();
     futureAbout = getAbout();
   }
-  Future<AboutButton> getAbout() async {
+
+  Future<About> getAbout() async {
     Response response;
-    response = await
+    response = await AboutAPI().getCategories();
+    return About.fromJSON(response.data);
   }
 
   @override
@@ -116,44 +114,54 @@ class _aboutHomeState extends State<aboutHome> {
               ),
 
               Expanded(
-                child: Stack(
-                  children: [
-                    Container(
-                      height: 100.h,
-                      padding: EdgeInsets.symmetric(horizontal: 25.w),
-                      decoration: BoxDecoration(
-                        color: HexColor('dee7f0'),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 10.w, top: 3.h),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          // crossAxisAlignment: CrossAxisAlignment.center,
-                          children: menuButtons
-                              .map((menu) => AboutItem(
-                                    icon: menu.icon,
-                                    label: menu.label,
-                                  ))
-                              .toList()),
-                    ),
-                    Trial(),
-                    Container(
-                      alignment: Alignment.bottomLeft,
-                      margin: EdgeInsets.only(bottom: 5),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Image.asset(
-                          'assets/BackBtn.png',
-                          height: 10.h,
-                          width: 10.w,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ),
-                  ],
+                child: FutureBuilder(
+                  future: futureAbout,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      About about = snapshot.data as About;
+                      return Stack(
+                        children: [
+                          Container(
+                            height: 100.h,
+                            padding: EdgeInsets.symmetric(horizontal: 25.w),
+                            decoration: BoxDecoration(
+                              color: HexColor('dee7f0'),
+                            ),
+                          ),
+                          // Container(
+                          //   margin: EdgeInsets.only(left: 10.w, top: 3.h),
+                          //   child: Row(
+                          //       mainAxisAlignment: MainAxisAlignment.start,
+                          //       // crossAxisAlignment: CrossAxisAlignment.center,
+                          //       children: about
+                          //           .map((menu) => AboutItem(
+                          //                 icon: Icons.info_outline,
+                          //                 label: menu.label,
+                          //               ))
+                          //           .toList()),
+                          // ),
+                          Trial(),
+                          Container(
+                            alignment: Alignment.bottomLeft,
+                            margin: EdgeInsets.only(bottom: 5),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Image.asset(
+                                'assets/BackBtn.png',
+                                height: 10.h,
+                                width: 10.w,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    } else {
+                      return Text('loading');
+                    }
+                  },
                 ),
               ),
               Container(
@@ -165,5 +173,4 @@ class _aboutHomeState extends State<aboutHome> {
           ),
         ));
   }
-
 }

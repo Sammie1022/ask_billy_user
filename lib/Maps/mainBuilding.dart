@@ -42,7 +42,7 @@ class _mainBuildingState extends State<mainBuilding> {
   Future<Building> getBuilding(String buildingName) async {
     Response response;
     response = await MapService().getBuilding(buildingName);
-    //print(response.data);
+    // print(response.data);
     //var building =
     // print(building.building_name);
     // print(building.image_path);
@@ -139,7 +139,12 @@ class _mainBuildingState extends State<mainBuilding> {
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(bottom: 10, left: 25),
                               child: Image.asset(
-                                'assets/MapsPage/MB.png',
+                                widget.buildingName == 'MAIN BUILDING'
+                                    ? 'assets/MapsPage/MB.png'
+                                    : widget.buildingName ==
+                                            'JHOCSON MARIANO BUILDING'
+                                        ? 'assets/MapsPage/JMB.png'
+                                        : 'assets/MapsPage/AB.png',
                                 width: width / 2,
                                 fit: BoxFit.contain,
                               ),

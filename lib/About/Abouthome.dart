@@ -1,9 +1,10 @@
+import 'dart:developer';
 import 'package:abigail_askbilly/About/AboutAPI.dart';
-import 'package:abigail_askbilly/About/AboutItem.dart';
 import 'package:abigail_askbilly/About/Admission.dart';
 import 'package:abigail_askbilly/About/ContactUs.dart';
 import 'package:abigail_askbilly/About/Scholarship.dart';
 import 'package:abigail_askbilly/About/Trial.dart';
+import 'package:abigail_askbilly/Classes/About.dart';
 import 'package:abigail_askbilly/Classes/About.dart';
 import 'package:abigail_askbilly/HomePage/Homepage.dart';
 import 'package:abigail_askbilly/LoadingPage/Loadingpage.dart';
@@ -31,7 +32,8 @@ class _aboutHomeState extends State<aboutHome> {
   final textTitleStyle = TextStyle(fontSize: 7.h, color: HexColor('061e47'));
   final contentStyle = TextStyle(fontSize: 3.h, color: HexColor('061e47'));
 
-  late Future<About> futureAbout;
+  late Future<List<About>> futureAbout;
+  String highlightedCategory = '';
   List<About> menuButtons = [];
 
   @override
@@ -40,10 +42,21 @@ class _aboutHomeState extends State<aboutHome> {
     futureAbout = getAbout();
   }
 
-  Future<About> getAbout() async {
+  Future<List<About>> getAbout() async {
     Response response;
     response = await AboutAPI().getCategories();
-    return About.fromJSON(response.data);
+    List<About> aboutList = [];
+    // print(response.data['value']);
+    var abouts = response.data['value'];
+    for (var about in abouts) {
+      aboutList.add(About.fromJSON(about));
+    }
+    // for (var category in response.data) {
+    //   print(category.category);
+    //   print(category.subcategories);
+    // }
+    print(aboutList);
+    return aboutList;
   }
 
   @override
@@ -114,11 +127,11 @@ class _aboutHomeState extends State<aboutHome> {
               ),
 
               Expanded(
-                child: FutureBuilder(
+                child: FutureBuilder<List<About>>(
                   future: futureAbout,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      About about = snapshot.data as About;
+                      //highlightedCategory = snapshot.data![0].category;
                       return Stack(
                         children: [
                           Container(
@@ -128,18 +141,15 @@ class _aboutHomeState extends State<aboutHome> {
                               color: HexColor('dee7f0'),
                             ),
                           ),
-                          // Container(
-                          //   margin: EdgeInsets.only(left: 10.w, top: 3.h),
-                          //   child: Row(
-                          //       mainAxisAlignment: MainAxisAlignment.start,
-                          //       // crossAxisAlignment: CrossAxisAlignment.center,
-                          //       children: about
-                          //           .map((menu) => AboutItem(
-                          //                 icon: Icons.info_outline,
-                          //                 label: menu.label,
-                          //               ))
-                          //           .toList()),
-                          // ),
+                          Container(
+                            margin: EdgeInsets.only(left: 10.w, top: 3.h),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                // crossAxisAlignment: CrossAxisAlignment.center,
+                                children: snapshot.data!
+                                    .map((menu) => _aboutButton(menu))
+                                    .toList()),
+                          ),
                           Trial(),
                           Container(
                             alignment: Alignment.bottomLeft,
@@ -172,5 +182,33 @@ class _aboutHomeState extends State<aboutHome> {
             ],
           ),
         ));
+  }
+
+  Widget _aboutButton(About about) {
+    return Container(
+      margin: EdgeInsets.only(right: 6.w),
+      child: ElevatedButton(
+        onPressed: () {
+          highlightedCategory = about.category;
+          setState(() {});
+        },
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
+          primary: highlightedCategory == about.category
+              ? HexColor('061e47')
+              : HexColor('af9f30'),
+          elevation: 5,
+          // padding: EdgeInsets.symmetric(
+          //     vertical: 2.h, horizontal: 7.w),
+        ),
+        child: Text(
+          about.category,
+          style: GoogleFonts.montserrat(
+              textStyle: btnStyle,
+              fontWeight: FontWeight.w500,
+              fontSize: 10.sp),
+        ),
+      ),
+    );
   }
 }

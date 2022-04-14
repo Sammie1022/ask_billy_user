@@ -7,7 +7,8 @@ class AboutAPI {
 
   getCategories() async {
     try {
-      return await dio.post('https://project-billy.herokuapp.com/getCategories',
+      return await dio.post('https://project-billy.herokuapp.com/getcategories',
+          data: {},
           options: Options(contentType: Headers.formUrlEncodedContentType));
     } on DioError catch (e) {
       Fluttertoast.showToast(

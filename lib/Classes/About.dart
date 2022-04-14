@@ -6,7 +6,10 @@ class About {
   final String category;
   final List<SubCategory> subcategories;
 
-  About({required this.category, required this.subcategories});
+  About({
+    required this.category,
+    required this.subcategories,
+  });
 
   factory About.fromJSON(Map<String, dynamic> data) {
     return About(
@@ -14,10 +17,10 @@ class About {
         subcategories: iterateSubcategories(data['subcategories']));
   }
 
-  static List<SubCategory> iterateSubcategories(data) {
+  static List<SubCategory> iterateSubcategories(List data) {
     List<SubCategory> subcategories = [];
     for (var subcategory in data) {
-      subcategories.add(subcategory.fromJSON(subcategory));
+      subcategories.add(SubCategory.fromJSON(subcategory));
     }
     return subcategories;
   }

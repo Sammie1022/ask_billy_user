@@ -1,3 +1,4 @@
+import 'package:abigail_askbilly/Classes/About.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -6,6 +7,7 @@ import 'package:sizer/sizer.dart';
 import '../LandingPage/Landingpage.dart';
 
 class Trial extends StatefulWidget {
+//  final About about;
   const Trial({Key? key}) : super(key: key);
 
   @override

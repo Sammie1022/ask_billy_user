@@ -1,15 +1,19 @@
+import 'package:abigail_askbilly/About/AboutAPI.dart';
 import 'package:abigail_askbilly/About/Admission.dart';
 import 'package:abigail_askbilly/About/ContactUs.dart';
 import 'package:abigail_askbilly/About/Scholarship.dart';
+import 'package:abigail_askbilly/Classes/SubCategory.dart';
 import 'package:abigail_askbilly/HomePage/Homepage.dart';
 import 'package:abigail_askbilly/LoadingPage/Loadingpage.dart';
 import 'package:abigail_askbilly/Maps/Mapshome.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
 
+import '../Classes/About.dart';
 import '../LandingPage/Landingpage.dart';
 import '../MenuBar.dart';
 
@@ -25,6 +29,39 @@ class _aboutHomeState extends State<aboutHome> {
   final btnStyle = TextStyle(fontSize: 3.h, color: Colors.white);
   final textTitleStyle = TextStyle(fontSize: 7.h, color: HexColor('061e47'));
   final contentStyle = TextStyle(fontSize: 3.h, color: HexColor('061e47'));
+
+  late Future<List<About>> futureAbout;
+  String highlightedCategory = '';
+  List<About> menuButtons = [];
+  List<SubCategory> subList = [];
+  String currentTitle = '';
+  String currentDescription = '';
+  String currentCategory = '';
+  @override
+  void initState() {
+    super.initState();
+    futureAbout = getAbout();
+  }
+
+  Future<List<About>> getAbout() async {
+    Response response;
+    response = await AboutAPI().getCategories();
+    List<About> aboutList = [];
+    var abouts = response.data['value'];
+    for (var about in abouts) {
+      aboutList.add(About.fromJSON(about));
+    }
+
+    setState(() {
+      currentCategory = aboutList[0].category;
+      menuButtons = aboutList;
+      subList = aboutList[0].subcategories;
+      currentTitle = subList[0].subcategory;
+      currentDescription = subList[0].description;
+    });
+    return aboutList;
+  }
+
   @override
   Widget build(BuildContext context) {
     // getting the size of the window
@@ -144,11 +181,28 @@ class _aboutHomeState extends State<aboutHome> {
                           Container(
                             child: ElevatedButton.icon(
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Scholarship()),
-                                );
+                                int i = 0;
+                                int index = 0;
+                                int flag = 0;
+                                while (flag != 1) {
+                                  if (menuButtons[index].category ==
+                                      "Scholarship") {
+                                    i = index;
+                                    flag = 1;
+                                  } else {
+                                    index++;
+                                  }
+                                }
+                                setState(() {
+                                  currentCategory = menuButtons[i].category;
+                                  currentTitle = menuButtons[i]
+                                      .subcategories[0]
+                                      .subcategory;
+                                  currentDescription = menuButtons[i]
+                                      .subcategories[0]
+                                      .description;
+                                  subList = menuButtons[i].subcategories;
+                                });
                               },
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
@@ -177,11 +231,28 @@ class _aboutHomeState extends State<aboutHome> {
                           Container(
                             child: ElevatedButton.icon(
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Admission()),
-                                );
+                                int i = 0;
+                                int index = 0;
+                                int flag = 0;
+                                while (flag != 1) {
+                                  if (menuButtons[index].category ==
+                                      "Admissions") {
+                                    i = index;
+                                    flag = 1;
+                                  } else {
+                                    index++;
+                                  }
+                                }
+                                setState(() {
+                                  currentCategory = menuButtons[i].category;
+                                  currentTitle = menuButtons[i]
+                                      .subcategories[0]
+                                      .subcategory;
+                                  currentDescription = menuButtons[i]
+                                      .subcategories[0]
+                                      .description;
+                                  subList = menuButtons[i].subcategories;
+                                });
                               },
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
@@ -210,11 +281,28 @@ class _aboutHomeState extends State<aboutHome> {
                           Container(
                             child: ElevatedButton.icon(
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => contactUs()),
-                                );
+                                int i = 0;
+                                int index = 0;
+                                int flag = 0;
+                                while (flag != 1) {
+                                  if (menuButtons[index].category ==
+                                      "Contact Us") {
+                                    i = index;
+                                    flag = 1;
+                                  } else {
+                                    index++;
+                                  }
+                                }
+                                setState(() {
+                                  currentCategory = menuButtons[i].category;
+                                  currentTitle = menuButtons[i]
+                                      .subcategories[0]
+                                      .subcategory;
+                                  currentDescription = menuButtons[i]
+                                      .subcategories[0]
+                                      .description;
+                                  subList = menuButtons[i].subcategories;
+                                });
                               },
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
@@ -260,168 +348,54 @@ class _aboutHomeState extends State<aboutHome> {
                             height: 59.h,
                             width: 38.w,
                             child: SingleChildScrollView(
-                                child: Column(
-                              children: [
-                                SizedBox(
-                                  width: 30.w,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                landingPage()),
-                                      );
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        primary: HexColor('af9f30'),
-                                        elevation: 5,
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 1.h, horizontal: 1.w),
-                                        textStyle: TextStyle(fontSize: 6.sp)),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'Brief History',
-                                          style: GoogleFonts.montserrat(
-                                              textStyle: btnStyle,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 10.sp),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 1.h,
-                                ),
-                                SizedBox(
-                                  width: 30.w,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                landingPage()),
-                                      );
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      primary: HexColor('af9f30'),
-                                      elevation: 5,
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 1.h, horizontal: 1.w),
-                                    ),
-                                    child: Text(
-                                      'Mission and Vision',
-                                      style: GoogleFonts.montserrat(
-                                          textStyle: btnStyle,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 10.sp),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 1.h,
-                                ),
-                                SizedBox(
-                                  width: 30.w,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                landingPage()),
-                                      );
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        primary: HexColor('af9f30'),
-                                        elevation: 5,
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 1.h, horizontal: 1.w),
-                                        textStyle: TextStyle(fontSize: 6.sp)),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'Core Values',
-                                          style: GoogleFonts.montserrat(
-                                              textStyle: btnStyle,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 10.sp),
-                                          textAlign: TextAlign.start,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 1.h,
-                                ),
-                                SizedBox(
-                                  width: 30.w,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                landingPage()),
-                                      );
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        primary: HexColor('af9f30'),
-                                        elevation: 5,
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 1.h, horizontal: 1.w),
-                                        textStyle: TextStyle(fontSize: 6.sp)),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Gain',
-                                          style: GoogleFonts.montserrat(
-                                              textStyle: btnStyle,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 10.sp),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 1.h,
-                                ),
-                                SizedBox(
-                                  width: 30.w,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                landingPage()),
-                                      );
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        primary: HexColor('af9f30'),
-                                        elevation: 5,
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 1.h, horizontal: 1.w),
-                                        textStyle: TextStyle(fontSize: 6.sp)),
-                                    child: Text(
-                                      'QuaWORlity Policy',
-                                      style: GoogleFonts.montserrat(
-                                          textStyle: btnStyle,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 10.sp),
-                                      textAlign: TextAlign.start,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )),
+                              child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    ListView.builder(
+                                      itemCount: subList.length,
+                                      shrinkWrap: true,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return SizedBox(
+                                          width: 30.w,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                currentTitle =
+                                                    subList[index].subcategory;
+                                                currentDescription =
+                                                    subList[index].description;
+                                              });
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                primary: HexColor('af9f30'),
+                                                elevation: 5,
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical: 1.h,
+                                                    horizontal: 1.w),
+                                                textStyle:
+                                                    TextStyle(fontSize: 6.sp)),
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  subList[index].subcategory,
+                                                  style: GoogleFonts.montserrat(
+                                                      textStyle: btnStyle,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 10.sp),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      }, // use it
+                                    )
+                                  ]),
+                            ),
                           ),
                           Container(
                             height: 75.h,
@@ -435,7 +409,7 @@ class _aboutHomeState extends State<aboutHome> {
                             children: [
                               Container(
                                 child: Text(
-                                  'Title Here',
+                                  currentTitle,
                                   style: GoogleFonts.montserrat(
                                       textStyle: textTitleStyle,
                                       fontWeight: FontWeight.w500,
@@ -462,14 +436,7 @@ class _aboutHomeState extends State<aboutHome> {
                                   scrollDirection: Axis.vertical,
                                   padding: EdgeInsets.all(3.sp),
                                   child: Text(
-                                    '''University Location
-The University can easily be reached from any part of the City of Manila by using the ordinary means of transportation.
-
-From Quiapo, one may take jeepney plying the Quiapo Lealtad route at Barbosa Street in Quiapo and then alight at a point on F. Jhocson: if preferred, one may take Balic-Balic bound jeepney and alight at the corner of G. Tuazon and M. F. Jhocson Streets.
-
-The University may also be reached by way of Espana Street from points North or Northwest through Cayco Street, then turn right through F. Jhocson Street to M. F. Jhocson Street; from points Northwest through Earnshaw Street, turn left through Cayco then right through F. Jhocson to M. F. Jhocson.
-
-From Antipolo, Cainta, Marikina, Pasig and surrounding communities, the University can be reached by taking the LRT Marikina Santolan Station and alight at the Legarda Station, then proceed towards the Sampaloc church, turn right to F. Jhocson Street.''',
+                                    currentDescription,
                                     style: GoogleFonts.montserrat(
                                         textStyle: contentStyle,
                                         fontWeight: FontWeight.normal,

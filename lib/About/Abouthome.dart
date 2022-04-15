@@ -1,7 +1,4 @@
 import 'package:abigail_askbilly/About/AboutAPI.dart';
-import 'package:abigail_askbilly/About/Admission.dart';
-import 'package:abigail_askbilly/About/ContactUs.dart';
-import 'package:abigail_askbilly/About/Scholarship.dart';
 import 'package:abigail_askbilly/Classes/SubCategory.dart';
 import 'package:abigail_askbilly/HomePage/Homepage.dart';
 import 'package:abigail_askbilly/LoadingPage/Loadingpage.dart';
@@ -26,9 +23,12 @@ class _aboutHomeState extends State<aboutHome> {
   var size, height, width;
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
   final titleStyle = TextStyle(fontSize: 6.h, color: HexColor('061e47'));
-  final btnStyle = TextStyle(fontSize: 3.h, color: Colors.white);
+  final btnStyle = TextStyle(
+      fontSize: 3.h, color: Colors.white, overflow: TextOverflow.fade);
   final textTitleStyle = TextStyle(fontSize: 7.h, color: HexColor('061e47'));
   final contentStyle = TextStyle(fontSize: 3.h, color: HexColor('061e47'));
+
+  String changeColor = "About NU";
 
   late Future<List<About>> futureAbout;
   String highlightedCategory = '';
@@ -37,6 +37,7 @@ class _aboutHomeState extends State<aboutHome> {
   String currentTitle = '';
   String currentDescription = '';
   String currentCategory = '';
+
   @override
   void initState() {
     super.initState();
@@ -76,6 +77,7 @@ class _aboutHomeState extends State<aboutHome> {
           child: menuBar(),
         ),
         body: Container(
+          color: HexColor('dee7f0'),
           height: 100.h,
           width: width,
           child: Column(
@@ -128,330 +130,381 @@ class _aboutHomeState extends State<aboutHome> {
                 height: 2.h,
                 width: width,
               ),
-
               Expanded(
                 child: Stack(
                   children: [
-                    Container(
-                      height: 100.h,
-                      padding: EdgeInsets.symmetric(horizontal: 25.w),
-                      decoration: BoxDecoration(
+                    Positioned.fill(
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            left: 15.w, right: 15.w, bottom: 5.h, top: 4.h),
                         color: HexColor('dee7f0'),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 10.w, top: 3.h),
-                      child: Row(
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        // crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            child: ElevatedButton.icon(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => aboutHome()),
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(7)),
-                                primary: HexColor('061e47'),
-                                elevation: 5,
-                                // padding: EdgeInsets.symmetric(
-                                //     vertical: 2.h, horizontal: 7.w),
-                              ),
-                              icon: Icon(
-                                Icons.info_outline,
-                                size: 4.h,
-                              ),
-                              label: Text(
-                                'About NU',
-                                style: GoogleFonts.montserrat(
-                                    textStyle: btnStyle,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 10.sp),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 2.5.w,
-                          ),
-                          Container(
-                            child: ElevatedButton.icon(
-                              onPressed: () {
-                                int i = 0;
-                                int index = 0;
-                                int flag = 0;
-                                while (flag != 1) {
-                                  if (menuButtons[index].category ==
-                                      "Scholarship") {
-                                    i = index;
-                                    flag = 1;
-                                  } else {
-                                    index++;
-                                  }
-                                }
-                                setState(() {
-                                  currentCategory = menuButtons[i].category;
-                                  currentTitle = menuButtons[i]
-                                      .subcategories[0]
-                                      .subcategory;
-                                  currentDescription = menuButtons[i]
-                                      .subcategories[0]
-                                      .description;
-                                  subList = menuButtons[i].subcategories;
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(7)),
-                                primary: HexColor('af9f30'),
-                                elevation: 5,
-                                // padding: EdgeInsets.symmetric(
-                                //     vertical: 2.h, horizontal: 7.w),
-                              ),
-                              icon: Icon(
-                                Icons.school,
-                                size: 4.h,
-                              ),
-                              label: Text(
-                                'Scholarship',
-                                style: GoogleFonts.montserrat(
-                                    textStyle: btnStyle,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 10.sp),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 2.5.w,
-                          ),
-                          Container(
-                            child: ElevatedButton.icon(
-                              onPressed: () {
-                                int i = 0;
-                                int index = 0;
-                                int flag = 0;
-                                while (flag != 1) {
-                                  if (menuButtons[index].category ==
-                                      "Admissions") {
-                                    i = index;
-                                    flag = 1;
-                                  } else {
-                                    index++;
-                                  }
-                                }
-                                setState(() {
-                                  currentCategory = menuButtons[i].category;
-                                  currentTitle = menuButtons[i]
-                                      .subcategories[0]
-                                      .subcategory;
-                                  currentDescription = menuButtons[i]
-                                      .subcategories[0]
-                                      .description;
-                                  subList = menuButtons[i].subcategories;
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(7)),
-                                primary: HexColor('af9f30'),
-                                elevation: 5,
-                                // padding: EdgeInsets.symmetric(
-                                //     vertical: 2.h, horizontal: 7.w),
-                              ),
-                              icon: Icon(
-                                Icons.perm_contact_cal,
-                                size: 4.h,
-                              ),
-                              label: Text(
-                                'Admission',
-                                style: GoogleFonts.montserrat(
-                                    textStyle: btnStyle,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 10.sp),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 2.5.w,
-                          ),
-                          Container(
-                            child: ElevatedButton.icon(
-                              onPressed: () {
-                                int i = 0;
-                                int index = 0;
-                                int flag = 0;
-                                while (flag != 1) {
-                                  if (menuButtons[index].category ==
-                                      "Contact Us") {
-                                    i = index;
-                                    flag = 1;
-                                  } else {
-                                    index++;
-                                  }
-                                }
-                                setState(() {
-                                  currentCategory = menuButtons[i].category;
-                                  currentTitle = menuButtons[i]
-                                      .subcategories[0]
-                                      .subcategory;
-                                  currentDescription = menuButtons[i]
-                                      .subcategories[0]
-                                      .description;
-                                  subList = menuButtons[i].subcategories;
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(7)),
-                                primary: HexColor('af9f30'),
-                                elevation: 5,
-                                // padding: EdgeInsets.symmetric(
-                                //     vertical: 2.h, horizontal: 7.w),
-                              ),
-                              icon: Icon(
-                                Icons.call,
-                                size: 4.h,
-                              ),
-                              label: Text(
-                                'Contact Us',
-                                style: GoogleFonts.montserrat(
-                                    textStyle: btnStyle,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 10.sp),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 65.h,
-                      width: width / 1.3,
-                      margin:
-                          EdgeInsets.only(left: 10.w, top: 10.h, bottom: 5.h),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
-                        color: Colors.white,
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(
-                                left: 1.sp, top: 1.sp, bottom: 1.sp),
-                            padding: EdgeInsets.all(2.sp),
-                            color: Colors.white,
-                            height: 59.h,
-                            width: 38.w,
-                            child: SingleChildScrollView(
-                              child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    ListView.builder(
-                                      itemCount: subList.length,
-                                      shrinkWrap: true,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return SizedBox(
-                                          width: 30.w,
-                                          child: ElevatedButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                currentTitle =
-                                                    subList[index].subcategory;
-                                                currentDescription =
-                                                    subList[index].description;
-                                              });
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                                primary: HexColor('af9f30'),
-                                                elevation: 5,
-                                                padding: EdgeInsets.symmetric(
-                                                    vertical: 1.h,
-                                                    horizontal: 1.w),
-                                                textStyle:
-                                                    TextStyle(fontSize: 6.sp)),
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  subList[index].subcategory,
-                                                  style: GoogleFonts.montserrat(
-                                                      textStyle: btnStyle,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: 10.sp),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      }, // use it
-                                    )
-                                  ]),
-                            ),
-                          ),
-                          Container(
-                            height: 75.h,
-                            width: .5.w,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                color: HexColor('af9f30')),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                        // color: Colors.blueGrey,
+                        child: Expanded(
+                          child: Column(
                             children: [
                               Container(
-                                child: Text(
-                                  currentTitle,
-                                  style: GoogleFonts.montserrat(
-                                      textStyle: textTitleStyle,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 17.sp),
+                                child: Row(
+                                  // mainAxisAlignment: MainAxisAlignment.center,
+                                  // crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          setState(() {
+                                            changeColor = "About NU";
+                                          });
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    aboutHome()),
+                                          );
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(7)),
+                                          // primary: HexColor('af9f30'),
+                                          primary: changeColor == "About NU"
+                                              ? Colors.blue
+                                              : HexColor('af9f30'),
+                                          elevation: 5,
+                                          // padding: EdgeInsets.symmetric(
+                                          //     vertical: 2.h, horizontal: 7.w),
+                                        ),
+                                        icon: Icon(
+                                          Icons.info_outline,
+                                          size: 4.h,
+                                        ),
+                                        label: Text(
+                                          'About NU',
+                                          style: GoogleFonts.montserrat(
+                                              textStyle: btnStyle,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 10.sp),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 2.5.w,
+                                    ),
+                                    Container(
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          setState(() {
+                                            changeColor = "Scholarship";
+                                          });
+                                          int i = 0;
+                                          int index = 0;
+                                          int flag = 0;
+                                          while (flag != 1) {
+                                            if (menuButtons[index].category ==
+                                                "Scholarship") {
+                                              i = index;
+                                              flag = 1;
+                                            } else {
+                                              index++;
+                                            }
+                                          }
+                                          setState(() {
+                                            currentCategory =
+                                                menuButtons[i].category;
+                                            currentTitle = menuButtons[i]
+                                                .subcategories[0]
+                                                .subcategory;
+                                            currentDescription = menuButtons[i]
+                                                .subcategories[0]
+                                                .description;
+                                            subList =
+                                                menuButtons[i].subcategories;
+                                          });
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(7)),
+                                          primary: changeColor == "Scholarship"
+                                              ? Colors.blue
+                                              : HexColor('af9f30'),
+                                          elevation: 5,
+                                          // padding: EdgeInsets.symmetric(
+                                          //     vertical: 2.h, horizontal: 7.w),
+                                        ),
+                                        icon: Icon(
+                                          Icons.school,
+                                          size: 4.h,
+                                        ),
+                                        label: Text(
+                                          'Scholarship',
+                                          style: GoogleFonts.montserrat(
+                                              textStyle: btnStyle,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 10.sp),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 2.5.w,
+                                    ),
+                                    Container(
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          setState(() {
+                                            changeColor = "Admission";
+                                          });
+                                          int i = 0;
+                                          int index = 0;
+                                          int flag = 0;
+                                          while (flag != 1) {
+                                            if (menuButtons[index].category ==
+                                                "Admissions") {
+                                              i = index;
+                                              flag = 1;
+                                            } else {
+                                              index++;
+                                            }
+                                          }
+                                          setState(() {
+                                            currentCategory =
+                                                menuButtons[i].category;
+                                            currentTitle = menuButtons[i]
+                                                .subcategories[0]
+                                                .subcategory;
+                                            currentDescription = menuButtons[i]
+                                                .subcategories[0]
+                                                .description;
+                                            subList =
+                                                menuButtons[i].subcategories;
+                                          });
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(7)),
+                                          primary: changeColor == "Admission"
+                                              ? Colors.blue
+                                              : HexColor('af9f30'),
+                                          // HexColor('af9f30')
+                                          elevation: 5,
+                                          // padding: EdgeInsets.symmetric(
+                                          //     vertical: 2.h, horizontal: 7.w),
+                                        ),
+                                        icon: Icon(
+                                          Icons.perm_contact_cal,
+                                          size: 4.h,
+                                        ),
+                                        label: Text(
+                                          'Admission',
+                                          style: GoogleFonts.montserrat(
+                                              textStyle: btnStyle,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 10.sp),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 2.5.w,
+                                    ),
+                                    Container(
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          setState(() {
+                                            changeColor = "Contact Us";
+                                          });
+                                          int i = 0;
+                                          int index = 0;
+                                          int flag = 0;
+                                          while (flag != 1) {
+                                            if (menuButtons[index].category ==
+                                                "Contact Us") {
+                                              i = index;
+                                              flag = 1;
+                                            } else {
+                                              index++;
+                                            }
+                                          }
+                                          setState(() {
+                                            currentCategory =
+                                                menuButtons[i].category;
+                                            currentTitle = menuButtons[i]
+                                                .subcategories[0]
+                                                .subcategory;
+                                            currentDescription = menuButtons[i]
+                                                .subcategories[0]
+                                                .description;
+                                            subList =
+                                                menuButtons[i].subcategories;
+                                          });
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(7)),
+                                          primary: changeColor == "Contact Us"
+                                              ? Colors.blue
+                                              : HexColor('af9f30'),
+                                          elevation: 5,
+                                          // padding: EdgeInsets.symmetric(
+                                          //     vertical: 2.h, horizontal: 7.w),
+                                        ),
+                                        icon: Icon(
+                                          Icons.call,
+                                          size: 4.h,
+                                        ),
+                                        label: Text(
+                                          'Contact Us',
+                                          style: GoogleFonts.montserrat(
+                                              textStyle: btnStyle,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 10.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                margin: EdgeInsets.only(left: 1.w),
+                                margin: EdgeInsets.only(bottom: 2.5.h),
                               ),
-                              Container(
-                                height: .3.h,
-                                width: width / 1.8,
-                                decoration: BoxDecoration(
+                              Expanded(
+                                child: Container(
+                                  decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8.0),
-                                    color: HexColor('af9f30')),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 1.sp, bottom: 1.sp, right: 1.sp),
-                                height: height / 2.7,
-                                width: width / 1.8,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                ),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.vertical,
-                                  padding: EdgeInsets.all(3.sp),
-                                  child: Text(
-                                    currentDescription,
-                                    style: GoogleFonts.montserrat(
-                                        textStyle: contentStyle,
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 9.sp),
+                                    color: Colors.white,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 4,
+                                        child: Container(
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.vertical,
+                                            child: ListView.separated(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 2.w),
+                                              itemCount: subList.length,
+                                              shrinkWrap: true,
+                                              separatorBuilder:
+                                                  (context, index) {
+                                                return SizedBox(
+                                                  height: 0.025.h,
+                                                );
+                                              },
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                return ElevatedButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      currentTitle =
+                                                          subList[index]
+                                                              .subcategory;
+                                                      currentDescription =
+                                                          subList[index]
+                                                              .description;
+                                                    });
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                      primary: currentTitle ==
+                                                              subList[index]
+                                                                  .subcategory
+                                                          ? Colors.red
+                                                          : HexColor('af9f30'),
+                                                      elevation: 5,
+                                                      textStyle: TextStyle(
+                                                          fontSize: 6.sp)),
+                                                  child: Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        subList[index]
+                                                            .subcategory,
+                                                        style: GoogleFonts
+                                                            .montserrat(
+                                                                textStyle:
+                                                                    btnStyle,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontSize:
+                                                                    10.sp),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              }, // use it
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 75.h,
+                                        width: .5.w,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            color: HexColor('af9f30')),
+                                      ),
+                                      Expanded(
+                                        flex: 8,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              child: Text(
+                                                currentTitle,
+                                                style: GoogleFonts.montserrat(
+                                                    textStyle: textTitleStyle,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 17.sp),
+                                              ),
+                                              margin:
+                                                  EdgeInsets.only(left: 1.w),
+                                            ),
+                                            Container(
+                                              height: .3.h,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  color: HexColor('af9f30')),
+                                            ),
+                                            Expanded(
+                                              child: Container(
+                                                child: SingleChildScrollView(
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  padding: EdgeInsets.all(3.sp),
+                                                  child: Text(
+                                                    currentDescription,
+                                                    style:
+                                                        GoogleFonts.montserrat(
+                                                            textStyle:
+                                                                contentStyle,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                            fontSize: 9.sp),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
                             ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                    Container(
-                      alignment: Alignment.bottomLeft,
-                      margin: EdgeInsets.only(bottom: 5),
+                    Positioned(
+                      bottom: 10.0,
+                      left: 10.0,
                       child: GestureDetector(
                         onTap: () {
                           Navigator.pop(context);
@@ -467,6 +520,7 @@ class _aboutHomeState extends State<aboutHome> {
                   ],
                 ),
               ),
+
               Container(
                 color: HexColor('061e47'),
                 height: 2.h,

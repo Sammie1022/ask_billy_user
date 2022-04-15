@@ -1,3 +1,4 @@
+import 'package:abigail_askbilly/Classes/Building.dart';
 import 'package:abigail_askbilly/Faqs/Faqshome.dart';
 import 'package:abigail_askbilly/HomePage/Homepage.dart';
 import 'package:abigail_askbilly/Maps/Mapshome.dart';
@@ -24,6 +25,7 @@ class _BuildingFacilityState extends State<BuildingFacility> {
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
   final titleStyle = TextStyle(color: HexColor('061e47'));
   final styleText = TextStyle(color: Colors.white);
+
   @override
   Widget build(BuildContext context) {
     // getting the size of the window
@@ -127,8 +129,14 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Stack(children: [
-                            Image.asset(
-                              'assets/MapsPage/MainBuilding/My Video.gif',
+                            Image.network(
+                              widget.facility.facility_path_guide,
+                              loadingBuilder:
+                                  (context, child, loadingProgress) {
+                                if (loadingProgress == null) return child;
+                                return Image.asset(
+                                    'assets/DBLoading/Loading top font.gif');
+                              },
                               width: 80.w,
                               fit: BoxFit.contain,
                             ),
@@ -151,8 +159,8 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                                 alignment: Alignment.center,
                                 //margin: EdgeInsets.only(left: 2.sp),
 
-                                child: Image.asset(
-                                  'assets/MapsPage/MB.png',
+                                child: Image.network(
+                                  widget.facility.facility_image_path,
                                   width: 67.w,
                                   fit: BoxFit.contain,
                                 ),

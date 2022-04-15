@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
       // ),
       home: Sizer(
         builder: (((context, orientation, deviceType) {
-          return landingPage();
+          return aboutHome();
         })),
       ),
     );

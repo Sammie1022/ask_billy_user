@@ -165,29 +165,30 @@ class _QuestionPageState extends State<QuestionPage> {
                 child: Stack(
                   children: [
                     Container(
-                      height: 100.h,
-                      width: width,
-                      decoration: BoxDecoration(
-                        color: HexColor('dee7f0'),
-                      ),
-                      padding: EdgeInsets.symmetric(vertical: 10.h),
-                      child: questions.isNotEmpty
-                          ? SingleChildScrollView(
-                              child: Column(
-                                  children: questions
-                                      .map((q) => QuestionItem(
-                                          question: q,
-                                          office: Office(
-                                              office_name: this.office_name,
-                                              location: this.location,
-                                              office_hours: this.office_hours,
-                                              office_email: this.office_email),
-                                          index: questions.indexOf(q),
-                                          officeName: widget.officeName))
-                                      .toList()),
-                            )
-                          : Text('loading'),
-                    ),
+                        height: 100.h,
+                        width: width,
+                        decoration: BoxDecoration(
+                          color: HexColor('dee7f0'),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 5.h),
+                        child: questions.isNotEmpty
+                            ? SingleChildScrollView(
+                                child: Column(
+                                    children: questions
+                                        .map((q) => QuestionItem(
+                                            question: q,
+                                            office: Office(
+                                                office_name: this.office_name,
+                                                location: this.location,
+                                                office_hours: this.office_hours,
+                                                office_email:
+                                                    this.office_email),
+                                            index: questions.indexOf(q),
+                                            officeName: widget.officeName))
+                                        .toList()),
+                              )
+                            : Image.asset(
+                                'assets/DBLoading/Loading top font.gif')),
                     Container(
                       alignment: Alignment.bottomLeft,
                       margin: EdgeInsets.only(bottom: 5),

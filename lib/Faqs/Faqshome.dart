@@ -111,8 +111,9 @@ class _faqsHomeState extends State<faqsHome> {
                       ),
                       padding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 5.w),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: GridView.count(
+                          crossAxisCount: 4,
+                          mainAxisSpacing: 20.sp,
                           children: offices
                               .map((office) => OfficeItem(
                                     buttonPath: office.buttonPath,

@@ -114,9 +114,6 @@ class _aboutHomeState extends State<aboutHome> {
                           fontWeight: FontWeight.bold,
                           fontSize: 25.sp),
                     ),
-                    Expanded(
-                      child: Container(),
-                    ),
                     Image.asset(
                       'assets/logo.png',
                       height: 7.h,
@@ -131,15 +128,17 @@ class _aboutHomeState extends State<aboutHome> {
                 width: width,
               ),
               Expanded(
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Container(
-                        margin: EdgeInsets.only(
-                            left: 15.w, right: 15.w, bottom: 5.h, top: 4.h),
-                        color: HexColor('dee7f0'),
-                        // color: Colors.blueGrey,
-                        child: Expanded(
+                child: Container(
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                        top: 0.0,
+                        left: 0.0,
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              left: 15.w, right: 15.w, bottom: 5.h, top: 4.h),
+                          color: HexColor('dee7f0'),
+                          // color: Colors.blueGrey,
                           child: Column(
                             children: [
                               Container(
@@ -153,12 +152,30 @@ class _aboutHomeState extends State<aboutHome> {
                                           setState(() {
                                             changeColor = "About NU";
                                           });
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    aboutHome()),
-                                          );
+                                          int i = 0;
+                                          int index = 0;
+                                          int flag = 0;
+                                          while (flag != 1) {
+                                            if (menuButtons[index].category ==
+                                                "About NU") {
+                                              i = index;
+                                              flag = 1;
+                                            } else {
+                                              index++;
+                                            }
+                                          }
+                                          setState(() {
+                                            currentCategory =
+                                                menuButtons[i].category;
+                                            currentTitle = menuButtons[i]
+                                                .subcategories[0]
+                                                .subcategory;
+                                            currentDescription = menuButtons[i]
+                                                .subcategories[0]
+                                                .description;
+                                            subList =
+                                                menuButtons[i].subcategories;
+                                          });
                                         },
                                         style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
@@ -166,7 +183,7 @@ class _aboutHomeState extends State<aboutHome> {
                                                   BorderRadius.circular(7)),
                                           // primary: HexColor('af9f30'),
                                           primary: changeColor == "About NU"
-                                              ? Colors.blue
+                                              ? HexColor('061e47')
                                               : HexColor('af9f30'),
                                           elevation: 5,
                                           // padding: EdgeInsets.symmetric(
@@ -224,7 +241,7 @@ class _aboutHomeState extends State<aboutHome> {
                                               borderRadius:
                                                   BorderRadius.circular(7)),
                                           primary: changeColor == "Scholarship"
-                                              ? Colors.blue
+                                              ? HexColor('061e47')
                                               : HexColor('af9f30'),
                                           elevation: 5,
                                           // padding: EdgeInsets.symmetric(
@@ -282,7 +299,7 @@ class _aboutHomeState extends State<aboutHome> {
                                               borderRadius:
                                                   BorderRadius.circular(7)),
                                           primary: changeColor == "Admission"
-                                              ? Colors.blue
+                                              ? HexColor('061e47')
                                               : HexColor('af9f30'),
                                           // HexColor('af9f30')
                                           elevation: 5,
@@ -341,7 +358,7 @@ class _aboutHomeState extends State<aboutHome> {
                                               borderRadius:
                                                   BorderRadius.circular(7)),
                                           primary: changeColor == "Contact Us"
-                                              ? Colors.blue
+                                              ? HexColor('061e47')
                                               : HexColor('af9f30'),
                                           elevation: 5,
                                           // padding: EdgeInsets.symmetric(
@@ -371,74 +388,66 @@ class _aboutHomeState extends State<aboutHome> {
                                     color: Colors.white,
                                   ),
                                   child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Expanded(
                                         flex: 4,
                                         child: Container(
-                                          child: SingleChildScrollView(
-                                            scrollDirection: Axis.vertical,
-                                            child: ListView.separated(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 2.w),
-                                              itemCount: subList.length,
-                                              shrinkWrap: true,
-                                              separatorBuilder:
-                                                  (context, index) {
-                                                return SizedBox(
-                                                  height: 0.025.h,
-                                                );
-                                              },
-                                              itemBuilder:
-                                                  (BuildContext context,
-                                                      int index) {
-                                                return ElevatedButton(
-                                                  onPressed: () {
-                                                    setState(() {
-                                                      currentTitle =
-                                                          subList[index]
-                                                              .subcategory;
-                                                      currentDescription =
-                                                          subList[index]
-                                                              .description;
-                                                    });
-                                                  },
-                                                  style: ElevatedButton.styleFrom(
-                                                      primary: currentTitle ==
-                                                              subList[index]
-                                                                  .subcategory
-                                                          ? Colors.red
-                                                          : HexColor('af9f30'),
-                                                      elevation: 5,
-                                                      textStyle: TextStyle(
-                                                          fontSize: 6.sp)),
-                                                  child: Row(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
+                                          child: ListView.separated(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 2.w),
+                                            itemCount: subList.length,
+                                            shrinkWrap: true,
+
+                                            separatorBuilder: (context, index) {
+                                              return SizedBox(
+                                                height: 0.025.h,
+                                              );
+                                            },
+                                            itemBuilder: (BuildContext context,
+                                                int index) {
+                                              return ElevatedButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    currentTitle =
                                                         subList[index]
-                                                            .subcategory,
-                                                        style: GoogleFonts
-                                                            .montserrat(
-                                                                textStyle:
-                                                                    btnStyle,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                fontSize:
-                                                                    10.sp),
-                                                      ),
-                                                    ],
+                                                            .subcategory;
+                                                    currentDescription =
+                                                        subList[index]
+                                                            .description;
+                                                  });
+                                                },
+                                                style: ElevatedButton.styleFrom(
+                                                    primary: currentTitle ==
+                                                            subList[index]
+                                                                .subcategory
+                                                        ? HexColor('061e47')
+                                                        : HexColor('af9f30'),
+                                                    elevation: 5,
+                                                    textStyle: TextStyle(
+                                                      fontSize: 6.sp,
+                                                    )),
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  child: Text(
+                                                    subList[index].subcategory,
+                                                    textAlign: TextAlign.left,
+                                                    style:
+                                                        GoogleFonts.montserrat(
+                                                      textStyle: btnStyle,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 10.sp,
+                                                    ),
                                                   ),
-                                                );
-                                              }, // use it
-                                            ),
+                                                ),
+                                              );
+                                            }, // use it
                                           ),
                                         ),
                                       ),
                                       Container(
-                                        height: 75.h,
                                         width: .5.w,
                                         decoration: BoxDecoration(
                                             borderRadius:
@@ -452,6 +461,8 @@ class _aboutHomeState extends State<aboutHome> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Container(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 0.5.h),
                                               child: Text(
                                                 currentTitle,
                                                 style: GoogleFonts.montserrat(
@@ -472,10 +483,11 @@ class _aboutHomeState extends State<aboutHome> {
                                             ),
                                             Expanded(
                                               child: Container(
+                                                width: double.infinity,
                                                 child: SingleChildScrollView(
                                                   scrollDirection:
                                                       Axis.vertical,
-                                                  padding: EdgeInsets.all(3.sp),
+                                                  padding: EdgeInsets.all(5.sp),
                                                   child: Text(
                                                     currentDescription,
                                                     style:
@@ -501,23 +513,23 @@ class _aboutHomeState extends State<aboutHome> {
                           ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      bottom: 10.0,
-                      left: 10.0,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Image.asset(
-                          'assets/BackBtn.png',
-                          height: 10.h,
-                          width: 10.w,
-                          fit: BoxFit.contain,
+                      Positioned(
+                        bottom: 10.0,
+                        left: 10.0,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Image.asset(
+                            'assets/BackBtn.png',
+                            height: 10.h,
+                            width: 10.w,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
 

@@ -139,7 +139,12 @@ class _mainBuildingState extends State<mainBuilding> {
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(bottom: 10, left: 25),
                               child: Image.asset(
-                                'assets/MapsPage/MB.png',
+                                widget.buildingName == 'MAIN BUILDING'
+                                    ? 'assets/MapsPage/MB.png'
+                                    : widget.buildingName ==
+                                            'JHOCSON MARIANO BUILDING'
+                                        ? 'assets/MapsPage/JMB.png'
+                                        : 'assets/MapsPage/AB.png',
                                 width: width / 2,
                                 fit: BoxFit.contain,
                               ),
@@ -197,7 +202,8 @@ class _mainBuildingState extends State<mainBuilding> {
                           ],
                         );
                       } else {
-                        return Text('loading');
+                        return Image.asset(
+                            'assets/DBLoading/Loading top font.gif');
                       }
                     }),
               ),
@@ -244,7 +250,7 @@ class _mainBuildingState extends State<mainBuilding> {
 
   Widget _facilityButton(Facility facility) {
     return Container(
-      width: 25.w,
+      width: 33.w,
       margin: EdgeInsets.symmetric(vertical: 0.25.h),
       child: ElevatedButton(
         onPressed: () {

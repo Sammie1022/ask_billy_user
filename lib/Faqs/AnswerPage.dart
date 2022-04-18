@@ -20,6 +20,7 @@ class AnswerPage extends StatefulWidget {
   final Office office;
   final String officeName;
   final int index;
+
   AnswerPage(
       {required this.question,
       required this.officeName,
@@ -50,7 +51,7 @@ class _AnswerPageState extends State<AnswerPage> {
 
   @override
   void initState() {
-    _controller = VideoPlayerController.network('assets/Untitled.mp4');
+    _controller = VideoPlayerController.asset('assets/HomePage/billy-talk.mp4');
     _controller.setLooping(true);
     _controller.addListener(() {});
     _controller.initialize().then((_) => setState(() {}));
@@ -97,9 +98,8 @@ class _AnswerPageState extends State<AnswerPage> {
   @override
   void dispose() {
     super.dispose();
-    flutterTts.pause();
     flutterTts.stop();
-    _controller.pause();
+    _controller.dispose();
   }
 
   @override
@@ -196,98 +196,79 @@ class _AnswerPageState extends State<AnswerPage> {
             Expanded(
               child: Stack(
                 children: [
-                  Container(
-                    height: 100.h,
-                    decoration: BoxDecoration(
+                  Positioned.fill(
+                    child: Container(
                       color: HexColor('dee7f0'),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(vertical: 4.h),
-                    // padding: EdgeInsets.only(right: 10.sp, bottom: 10.sp),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // SizedBox(
-                        //   height: 2.sp,
-                        // ),
-                        _question(widget.question.question),
-                        Container(
-                          height: height / 2,
-                          width: width / 1.3,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8.0),
-                              color: Colors.white),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                // margin: EdgeInsets.only(bottom: 5.h),
-                                height: 28.h,
-                                width: width / 2.7,
-                                color: Colors.white,
-                                alignment: Alignment.center,
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      // SizedBox(
-                                      //   height: 30,
-                                      // ),
-                                      VideoPlayer(_controller)
-                                    ],
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(vertical: 4.h),
+                      // padding: EdgeInsets.only(right: 10.sp, bottom: 10.sp),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // SizedBox(
+                          //   height: 2.sp,
+                          // ),
+                          _question(widget.question.question),
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  color: Colors.white),
+                              margin: EdgeInsets.symmetric(horizontal: 10.w),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: AspectRatio(
+                                      aspectRatio:
+                                          _controller.value.aspectRatio,
+                                      // height: (width * 9) / 16,
+                                      child: VideoPlayer(_controller),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Container(
-                                height: 28.6.h,
-                                width: .5.w,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    color: HexColor('af9f30')),
-                              ),
-                              Container(
-                                height: 28.h,
-                                width: width / 2.7,
-                                color: Colors.white,
-                                alignment: Alignment.center,
-                                child: SingleChildScrollView(
-                                  padding: EdgeInsets.only(left: 2.w),
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 20,
-                                        width: 1.w,
-                                      ),
-                                      Text(
-                                        widget.question.answer,
-                                        style: GoogleFonts.montserrat(
-                                            textStyle: answerText,
-                                            fontWeight: FontWeight.normal,
-                                            fontSize: 10.sp),
-                                      ),
-                                    ],
+                                  Container(
+                                    width: 0.5.w,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        color: HexColor('af9f30')),
                                   ),
-                                ),
+                                  Expanded(
+                                    child: Container(
+                                      child: SingleChildScrollView(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 5.w, vertical: 2.5.h),
+                                        child: Text(
+                                          widget.question.answer,
+                                          style: GoogleFonts.montserrat(
+                                              textStyle: answerText,
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 10.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  Container(
-                    alignment: Alignment.bottomLeft,
-                    margin: EdgeInsets.only(bottom: 5),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Image.asset(
-                        'assets/BackBtn.png',
-                        height: 10.h,
-                        width: 10.w,
-                        fit: BoxFit.contain,
+                  Positioned(
+                    child: Container(
+                      alignment: Alignment.bottomLeft,
+                      margin: EdgeInsets.only(bottom: 5),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Image.asset(
+                          'assets/BackBtn.png',
+                          height: 10.h,
+                          width: 10.w,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                   ),

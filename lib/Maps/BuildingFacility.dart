@@ -16,6 +16,7 @@ class BuildingFacility extends StatefulWidget {
   final Facility facility;
 
   const BuildingFacility({required this.floor_number, required this.facility});
+
   @override
   State<BuildingFacility> createState() => _BuildingFacilityState();
 }
@@ -108,89 +109,95 @@ class _BuildingFacilityState extends State<BuildingFacility> {
               Expanded(
                 child: Stack(
                   children: [
-                    Container(
-                      height: 100.h,
-                      padding: EdgeInsets.symmetric(horizontal: 25.w),
-                      decoration: BoxDecoration(
+                    Positioned.fill(
+                      child: Container(
                         color: HexColor('dee7f0'),
                       ),
                     ),
-                    Container(
-                      alignment: Alignment.center,
-                      margin:
-                          EdgeInsets.only(left: 14.w, top: 4.h, bottom: 4.h),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.0),
-                          color: Colors.white),
-                      height: 75.h,
-                      width: width / 1.3,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Stack(children: [
-                            Image.network(
-                              widget.facility.facility_path_guide,
-                              loadingBuilder:
-                                  (context, child, loadingProgress) {
-                                if (loadingProgress == null) return child;
-                                return Image.asset(
-                                    'assets/DBLoading/Loading top font.gif');
-                              },
-                              width: 80.w,
-                              fit: BoxFit.contain,
-                            ),
-                          ]),
-                          Container(
-                            height: 75.h,
-                            width: .5.w,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                color: HexColor('af9f30')),
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                //color: Colors.red,
-                                height: 15.h,
-                                width: 60.w,
-                                alignment: Alignment.center,
-                                //margin: EdgeInsets.only(left: 2.sp),
-
-                                child: Image.network(
-                                  widget.facility.facility_image_path,
-                                  width: 67.w,
+                    Positioned.fill(
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(
+                            left: 14.w, top: 4.h, bottom: 4.h, right: 14.w),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            color: Colors.white),
+                        height: 75.h,
+                        width: width / 1.3,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Stack(children: [
+                                Image.network(
+                                  widget.facility.facility_path_guide,
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                    if (loadingProgress == null) return child;
+                                    return Image.asset(
+                                        'assets/DBLoading/Loading top font.gif');
+                                  },
+                                  width: 80.w,
                                   fit: BoxFit.contain,
                                 ),
-                              ),
-                              Container(
-                                height: .3.h,
-                                width: 62.w,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    color: HexColor('af9f30')),
-                              ),
-                              Container(
-                                height: 15.h,
-                                width: 32.5.w,
-                                alignment: Alignment.center,
-                                // margin: EdgeInsets.only(left: 2.sp),
-                                padding: EdgeInsets.all(2.sp),
+                              ]),
+                            ),
+                            Container(
+                              height: 75.h,
+                              width: .5.w,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  color: HexColor('af9f30')),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      //color: Colors.red,
+                                      height: 15.h,
+                                      width: 60.w,
+                                      alignment: Alignment.center,
+                                      //margin: EdgeInsets.only(left: 2.sp),
 
-                                child: Text(
-                                  widget.facility.facility_description,
-                                  style: GoogleFonts.montserrat(
-                                      textStyle: styleText,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 9.sp,
-                                      color: HexColor('061e47')),
-                                ),
+                                      child: Image.network(
+                                        widget.facility.facility_image_path,
+                                        width: 67.w,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    height: .3.h,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        color: HexColor('af9f30')),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      height: 15.h,
+                                      width: 32.5.w,
+                                      alignment: Alignment.center,
+                                      // margin: EdgeInsets.only(left: 2.sp),
+                                      padding: EdgeInsets.all(2.sp),
+
+                                      child: Text(
+                                        widget.facility.facility_description,
+                                        style: GoogleFonts.montserrat(
+                                            textStyle: styleText,
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 9.sp,
+                                            color: HexColor('061e47')),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Container(

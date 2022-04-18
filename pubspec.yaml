@@ -84,6 +84,7 @@ flutter:
     - assets/BurgerMenu.png
     - assets/BackBtn.png
     - assets/NU_Map.png
+    - assets/HomePage/billy-talk.mp4
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

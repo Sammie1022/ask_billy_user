@@ -40,7 +40,6 @@ class _BuildingFacilityState extends State<BuildingFacility> {
 
   @override
   void initState() {
-
     super.initState();
     guidePath = widget.facility.facility_path_guide;
     if (guidePath.isNotEmpty) {

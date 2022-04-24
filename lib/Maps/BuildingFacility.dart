@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
+import 'package:video_player/video_player.dart';
 import '../Classes/Facility.dart';
 import '../MenuBar.dart';
 import 'mainBuilding.dart';
@@ -26,6 +27,31 @@ class _BuildingFacilityState extends State<BuildingFacility> {
   var _scaffoldKey = new GlobalKey<ScaffoldState>();
   final titleStyle = TextStyle(color: HexColor('061e47'));
   final styleText = TextStyle(color: Colors.white);
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+  String guidePath = '';
+  @override
+  void dispose() {
+    // Ensure disposing of the VideoPlayerController to free up resources.
+    _controller.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+
+    super.initState();
+    guidePath = widget.facility.facility_path_guide;
+    if (guidePath.isNotEmpty) {
+      _controller = VideoPlayerController.network(
+        guidePath,
+      );
+      _initializeVideoPlayerFuture = _controller.initialize();
+      _controller.play();
+      _controller.setLooping(true);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,17 +156,39 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                           children: [
                             Expanded(
                               child: Stack(children: [
-                                Image.network(
-                                  widget.facility.facility_path_guide,
-                                  loadingBuilder:
-                                      (context, child, loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return Image.asset(
-                                        'assets/DBLoading/Loading top font.gif');
+                                FutureBuilder(
+                                  future: _initializeVideoPlayerFuture,
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.done) {
+                                      // If the VideoPlayerController has finished initialization, use
+                                      // the data it provides to limit the aspect ratio of the video.
+                                      return AspectRatio(
+                                        aspectRatio:
+                                            _controller.value.aspectRatio,
+                                        // Use the VideoPlayer widget to display the video.
+                                        child: VideoPlayer(_controller),
+                                      );
+                                    } else {
+                                      // If the VideoPlayerController is still initializing, show a
+                                      // loading spinner.
+                                      return const Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    }
                                   },
-                                  width: 80.w,
-                                  fit: BoxFit.contain,
-                                ),
+                                )
+                                // Image.network(
+                                //   widget.facility.facility_path_guide,
+                                //   loadingBuilder:
+                                //       (context, child, loadingProgress) {
+                                //     if (loadingProgress == null) return child;
+                                //     return Image.asset(
+                                //         'assets/DBLoading/Loading top font.gif');
+                                //   },
+                                //   width: 80.w,
+                                //   fit: BoxFit.contain,
+                                // ),
                               ]),
                             ),
                             Container(

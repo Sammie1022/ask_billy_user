@@ -21,4 +21,20 @@ class FaqService {
           fontSize: 16.0);
     }
   }
+
+  getOffices() async {
+    try {
+      return await dio.post('https://project-billy.herokuapp.com/getoffices',
+          data: {},
+          options: Options(contentType: Headers.formUrlEncodedContentType));
+    } on DioError catch (e) {
+      Fluttertoast.showToast(
+          msg: e.response?.data['msg'],
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }
+  }
 }

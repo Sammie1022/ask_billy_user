@@ -8,8 +8,8 @@ class Question {
 
   factory Question.fromJSON(Map<String, dynamic> data) {
     return Question(
-        question: data['question'],
-        answer: data['answer'],
-        image_path: data['image_path']);
+        question: data['question'] ?? ' ',
+        answer: data['answer'] ?? ' ',
+        image_path: data['image_path'] ?? ' ');
   }
 }

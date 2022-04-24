@@ -5,9 +5,11 @@ import 'package:sizer/sizer.dart';
 class OfficeItem extends StatelessWidget {
   final String buttonPath;
   final String officeName;
-  const OfficeItem(
-      {Key? key, required this.buttonPath, required this.officeName})
-      : super(key: key);
+  OfficeItem({
+    Key? key,
+    required this.officeName,
+    required this.buttonPath,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class OfficeItem extends StatelessWidget {
                   )),
         );
       },
-      child: Image.asset(buttonPath, width: 22.w, fit: BoxFit.contain),
+      child: Image.network(buttonPath, width: 22.w, fit: BoxFit.contain),
     );
   }
 }

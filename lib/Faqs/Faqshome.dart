@@ -1,12 +1,16 @@
 import 'package:abigail_askbilly/Classes/OfficeButton.dart';
+import 'package:abigail_askbilly/Faqs/FaqService.dart';
 import 'package:abigail_askbilly/Faqs/OfficeItem.dart';
 import 'package:abigail_askbilly/HomePage/Homepage.dart';
 import 'package:abigail_askbilly/MenuBar.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
+
+import '../Classes/Faq.dart';
 
 class faqsHome extends StatefulWidget {
   @override
@@ -37,6 +41,35 @@ class _faqsHomeState extends State<faqsHome> {
         buttonPath: 'assets/FAQsPage/images/buttons/LRC-btn.png',
         officeName: 'LEARNING RESOURCE CENTER'),
   ];
+  late Future<List<Faq>> _getOffices;
+  List _faqsList = [];
+  @override
+  void initState() {
+    super.initState();
+    _getOffices = getOffices();
+  }
+
+  Future<List<Faq>> getOffices() async {
+    Response response;
+    response = await FaqService().getOffices();
+
+    List<Faq> faqList = [];
+    var office = response.data['value'];
+
+    for (var offices in office) {
+      faqList.add(Faq.fromJSON(offices));
+      print(offices);
+    }
+    print(faqList.map((e) => e.image_path));
+
+    setState(() {
+      _faqsList = faqList;
+    });
+
+    print(faqList.asMap());
+
+    return faqList;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,15 +144,35 @@ class _faqsHomeState extends State<faqsHome> {
                       ),
                       padding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 5.w),
-                      child: GridView.count(
-                          crossAxisCount: 4,
-                          mainAxisSpacing: 20.sp,
-                          children: offices
-                              .map((office) => OfficeItem(
-                                    buttonPath: office.buttonPath,
-                                    officeName: office.officeName,
-                                  ))
-                              .toList()),
+                      child: FutureBuilder<List<Faq>>(
+                        future: _getOffices,
+                        builder: (BuildContext context, snapshot) {
+                          switch (snapshot.connectionState) {
+                            case ConnectionState.none:
+                            case ConnectionState.waiting:
+                              return CircularProgressIndicator();
+                            default:
+                              print('-------------------------');
+
+                              if (snapshot.hasData) {
+                                print("pasok");
+                                print(snapshot.data!.asMap());
+
+                                return GridView.count(
+                                    mainAxisSpacing: 20.sp,
+                                    crossAxisCount: 4,
+                                    children: snapshot.data!
+                                        .map((office) => OfficeItem(
+                                              officeName: office.office_name,
+                                              buttonPath: office.image_path,
+                                            ))
+                                        .toList());
+                              } else {
+                                return CircularProgressIndicator();
+                              }
+                          }
+                        },
+                      ),
                     ),
                     Container(
                       alignment: Alignment.bottomLeft,

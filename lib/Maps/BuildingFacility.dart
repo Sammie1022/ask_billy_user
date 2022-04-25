@@ -171,9 +171,8 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                                     } else {
                                       // If the VideoPlayerController is still initializing, show a
                                       // loading spinner.
-                                      return const Center(
-                                        child: CircularProgressIndicator(),
-                                      );
+                                      return Image.asset(
+                                          'assets/DBLoading/Loading top font.gif');
                                     }
                                   },
                                 )

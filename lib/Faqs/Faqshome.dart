@@ -150,7 +150,8 @@ class _faqsHomeState extends State<faqsHome> {
                           switch (snapshot.connectionState) {
                             case ConnectionState.none:
                             case ConnectionState.waiting:
-                              return CircularProgressIndicator();
+                              return Image.asset(
+                                  'assets/DBLoading/Loading top font.gif');
                             default:
                               print('-------------------------');
 
@@ -168,7 +169,8 @@ class _faqsHomeState extends State<faqsHome> {
                                             ))
                                         .toList());
                               } else {
-                                return CircularProgressIndicator();
+                                return Image.asset(
+                                    'assets/DBLoading/Loading top font.gif');
                               }
                           }
                         },

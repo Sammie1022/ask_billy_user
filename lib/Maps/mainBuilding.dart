@@ -1,9 +1,7 @@
 import 'package:abigail_askbilly/Classes/Building.dart';
 import 'package:abigail_askbilly/Classes/Facility.dart';
-import 'package:abigail_askbilly/LoadingPage/Loadingpage.dart';
 import 'package:abigail_askbilly/Maps/BuildingFacility.dart';
 import 'package:abigail_askbilly/Maps/MapService.dart';
-import 'package:abigail_askbilly/Maps/Mapshome.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -42,17 +40,6 @@ class _mainBuildingState extends State<mainBuilding> {
   Future<Building> getBuilding(String buildingName) async {
     Response response;
     response = await MapService().getBuilding(buildingName);
-    //print(response.data);
-    //var building =
-    // print(building.building_name);
-    // print(building.image_path);
-    //
-    // for (var floor in building.floors) {
-    //   print(floor.floor_number);
-    //   for (var facility in floor.facilities) {
-    //     print(facility.facility_name);
-    //   }
-    // }
     return Building.fromJSON(response.data);
   }
 

@@ -1,7 +1,3 @@
-import 'package:abigail_askbilly/Classes/Building.dart';
-import 'package:abigail_askbilly/Faqs/Faqshome.dart';
-import 'package:abigail_askbilly/HomePage/Homepage.dart';
-import 'package:abigail_askbilly/Maps/Mapshome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +6,6 @@ import 'package:sizer/sizer.dart';
 import 'package:video_player/video_player.dart';
 import '../Classes/Facility.dart';
 import '../MenuBar.dart';
-import 'mainBuilding.dart';
 
 class BuildingFacility extends StatefulWidget {
   final String floor_number;
@@ -176,17 +171,6 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                                     }
                                   },
                                 )
-                                // Image.network(
-                                //   widget.facility.facility_path_guide,
-                                //   loadingBuilder:
-                                //       (context, child, loadingProgress) {
-                                //     if (loadingProgress == null) return child;
-                                //     return Image.asset(
-                                //         'assets/DBLoading/Loading top font.gif');
-                                //   },
-                                //   width: 80.w,
-                                //   fit: BoxFit.contain,
-                                // ),
                               ]),
                             ),
                             Container(
@@ -224,7 +208,7 @@ class _BuildingFacilityState extends State<BuildingFacility> {
                                   Expanded(
                                     child: Container(
                                       height: 15.h,
-                                      width: 32.5.w,
+                                      width: 70.w,
                                       alignment: Alignment.center,
                                       // margin: EdgeInsets.only(left: 2.sp),
                                       padding: EdgeInsets.all(2.sp),

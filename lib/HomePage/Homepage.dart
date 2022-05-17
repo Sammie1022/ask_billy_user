@@ -4,7 +4,6 @@ import 'package:abigail_askbilly/Maps/Mapshome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:abigail_askbilly/LoadingPage/Loadingpage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
@@ -144,10 +143,6 @@ class _homePageState extends State<homePage> {
                                       size: 13.sp,
                                       color: Colors.white,
                                     ),
-                                    // decoration: BoxDecoration(
-                                    //   borderRadius: BorderRadius.circular(50.0),
-                                    //   color: HexColor('230871'),
-                                    // ),
                                     padding: EdgeInsets.all(.5.w),
                                   ),
                                   SizedBox(

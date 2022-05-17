@@ -1,14 +1,10 @@
-import 'package:abigail_askbilly/HomePage/Homepage.dart';
 import 'package:abigail_askbilly/Maps/BuildingItem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
-
 import '../MenuBar.dart';
-
-import 'mainBuilding.dart';
 
 class mapsHome extends StatefulWidget {
   @override
@@ -99,9 +95,9 @@ class _mapsHomeState extends State<mapsHome> {
                       ),
                       padding: EdgeInsets.symmetric(horizontal: 9.w),
                       child: Container(
-                        margin: EdgeInsets.only(bottom: 10),
+                        margin: EdgeInsets.only(bottom: 28),
                         child: Image.asset(
-                          'assets/MapsPage/NU-building.png',
+                          'assets/NU_Building.png',
                           width: width / 2,
                           fit: BoxFit.contain,
                         ),

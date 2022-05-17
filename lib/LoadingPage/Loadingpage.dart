@@ -2,8 +2,6 @@ import 'dart:async';
 import 'package:abigail_askbilly/HomePage/Homepage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
 
 class LoadingPage extends StatefulWidget {

@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
-
 import '../Classes/Faq.dart';
 
 class faqsHome extends StatefulWidget {
